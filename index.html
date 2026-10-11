@@ -1,0 +1,1303 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>document.documentElement.classList.add('js')</script>
+<title>InspireMD, Inc. (Nasdaq: NSPR) | Investor Relations Concept</title>
+<meta name="description" content="An independent design concept for the InspireMD (Nasdaq: NSPR) investor relations page. Not affiliated with InspireMD, Inc.; the official IR site is https://investors.inspiremd.com/.">
+<link rel="icon" href="img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&amp;family=Red+Hat+Mono:wght@400;500;600&amp;family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..700&amp;display=swap" rel="stylesheet">
+<style>
+/* mc:tokens */
+:root{
+  /* palette.mjs --brand "#002F87,deep=#00184C,accent-2=#88C13F" --strategy drenched  (drenched)
+     accent   #002f87 oklch(0.345 0.154 261.5)
+     accent-2 #88c13f oklch(0.746 0.170 130.1)
+     deep     #00184c oklch(0.233 0.101 261.1)
+     measured: white on --accent-ink 7.31:1, --accent-ink on --paper 7.10:1, --text-mid on --tint 5.65:1 */
+  --H: 261.5; --Hn: 261.1;
+  --accent:        oklch(0.78 0.111 261.5); /* bright: fills on light stock; text only on dark where --check proves >= 4.5; derived L0.78 */
+  --accent-lo:     oklch(0.78 0.111 261.5 / 0.14);
+  --accent-lt:     oklch(0.86 0.068 261.5); /* bright accent ON dark surfaces */
+  --accent-ink:    oklch(0.46 0.154 261.5); /* TEXT, links, primary-button background */
+  --accent-ink-d:  oklch(0.40 0.142 261.5); /* hover */
+  --accent-2:      oklch(0.746 0.170 130.1); /* real */
+  --accent-2-lt:   oklch(0.86 0.136 130.1);
+  --accent-2-ink:  oklch(0.46 0.123 130.1);
+  --ink:           oklch(0.26 0.030 261.1); /* headings */
+  --deep:          oklch(0.233 0.101 261.1); /* permanently dark band; real */
+  --paper:         oklch(0.99 0.004 261.1);
+  --card:          oklch(0.996 0.001 261.1);
+  --tint:          oklch(0.965 0.016 261.5); /* .sec-tint band, concept note, card interiors */
+  --tint-2:        oklch(0.91 0.035 261.5); /* borders, ghost outlines, the darker of two light bands */
+  --text:          oklch(0.31 0.030 261.1);
+  --text-mid:      oklch(0.49 0.030 261.1);
+  --line:          oklch(0.30 0.010 261.1 / 0.13);
+  --line-d:        oklch(0.98 0.009 261.5 / 0.14);
+  /* surface-slot defaults (foundation surface block); retune in surface.css */
+  --sheet-edge:    oklch(0.40 0.142 261.5 / 0.26);
+  --blind:         oklch(1.00 0.000 0 / 0.5);
+  --blind-k:       oklch(1.00 0.000 0 / 0.85);
+  --sheet-neg:     oklch(0.98 0.009 261.5 / 0.05);
+  --serif:         'Montserrat', system-ui, sans-serif;
+  --sans:          'Source Serif 4', system-ui, sans-serif;
+  --mono:          'Red Hat Mono', ui-monospace, monospace;
+  --wrap: 1140px; --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+/* mc:substrate 9576b9be1505 */
+/* mediaconsole substrate: inlined by scripts/scaffold.mjs, identical on every page. Never edit or retype it;
+   override in page/layer.css or page/surface.css (both load after it). Band: all. Hue-parametric: colours are
+   tokens or oklch(... var(--Hn)). Integrity: opaque nav, content visible without JS, print and forced-colors safe. */
+:where(:root){--wrap:1140px;--ease:cubic-bezier(0.22, 1, 0.36, 1)}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;scroll-padding-top:88px}
+body{font-family:var(--sans);color:var(--text);background:var(--paper);font-size:16px;line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none} img,svg{display:block;max-width:100%} button{font:inherit;cursor:pointer}
+::selection{background:var(--accent-lt);color:var(--deep)}
+:focus-visible{outline:2px solid var(--accent-ink);outline-offset:3px;border-radius:2px}
+.sec-dark :focus-visible,.snapshot :focus-visible,footer :focus-visible{outline-color:var(--accent-lt)}
+.wrap{width:min(var(--wrap),100% - 44px);margin-inline:auto}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip-link{position:absolute;left:12px;top:-60px;z-index:200;background:var(--deep);color:#fff;padding:10px 16px;border-radius:6px;font-size:.85rem;transition:top .2s var(--ease)}
+.skip-link:focus{top:12px}
+.concept-note{background:var(--tint);color:var(--accent-ink-d);font-size:.78rem;text-align:center;padding:8px 16px;position:relative;z-index:101}
+.concept-note a{color:inherit;font-weight:600;text-decoration:underline}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.08;letter-spacing:-.01em;color:var(--ink)}
+h1{font-size:clamp(2.35rem,5.3vw,4rem)} h2{font-size:clamp(1.7rem,3.4vw,2.5rem)} h3{font-size:clamp(1.15rem,2vw,1.4rem)}
+p{max-width:68ch}
+.eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--accent-ink);display:inline-flex;align-items:center;gap:9px;margin-bottom:16px}
+.eyebrow::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--accent);flex:none}
+.lead{font-size:clamp(1.08rem,1.7vw,1.3rem);line-height:1.55;color:var(--text-mid)}
+/* four house buttons: primary + ghost on light stock, primary-light + ghost-light on dark stock.
+   Text on dark uses --accent-lt, never --accent (D16: --accent may be a mid-L real brand colour; it is a fill). */
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:11px 22px;border-radius:8px;font-family:var(--sans);font-size:.82rem;font-weight:600;letter-spacing:.02em;border:1.5px solid transparent;background:transparent;transition:background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease),transform .2s var(--ease)}
+.btn:hover{transform:translateY(-1px)} .btn .arw{font-family:var(--mono);transition:transform .2s var(--ease)} .btn:hover .arw{transform:translateX(3px)}
+.btn-primary{background:var(--accent-ink);color:#fff} .btn-primary:hover{background:var(--accent-ink-d)}
+.btn-ghost{border-color:var(--tint-2);color:var(--accent-ink)} .btn-ghost:hover{background:var(--tint);border-color:var(--accent-ink)}
+.btn-primary-light{background:var(--accent-lt);color:var(--deep)} .btn-primary-light:hover{background:var(--tint)}
+.btn-ghost-light{border-color:oklch(0.98 0.01 var(--Hn)/.4);color:#fff} .btn-ghost-light:hover{background:oklch(0.98 0.01 var(--Hn)/.1)}
+/* nav: opaque by rule (no translucency, no blur); markup is emitted by scaffold.mjs from page.json */
+.site-nav{position:sticky;top:0;z-index:100;background:var(--paper);border-bottom:1px solid var(--line);transition:box-shadow .3s var(--ease)}
+.site-nav.scrolled{box-shadow:0 6px 24px oklch(0.3 0.02 var(--Hn)/.07)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px;gap:20px}
+.nav-brand{display:flex;align-items:center;gap:12px;min-height:44px;min-width:0}
+.nav-logo{display:flex;align-items:center;flex:none}
+.nav-logo img{height:26px;width:auto}
+.nav-name{font-family:var(--serif);font-size:1.2rem;line-height:1.1;color:var(--ink)}
+.nav-tick{font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;color:var(--text-mid);border:1px solid var(--line);border-radius:5px;padding:4px 8px}
+.nav-links{display:flex;align-items:center;gap:24px;list-style:none}
+.nav-links a:not(.btn){font-size:.86rem;font-weight:500;color:var(--text-mid);transition:color .2s var(--ease)}
+.nav-links a:not(.btn):hover{color:var(--accent-ink)}
+.nav-links a.active{color:var(--ink);text-decoration:underline;text-underline-offset:7px;text-decoration-color:var(--accent);text-decoration-thickness:2px}
+.nav-burger{display:none;flex-direction:column;gap:5px;width:44px;height:44px;align-items:center;justify-content:center;background:none;border:none}
+.nav-burger span{width:22px;height:2px;background:var(--ink);border-radius:2px;transition:transform .25s var(--ease),opacity .2s}
+.nav-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.nav-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+/* bands: FLAT FILLS, the floor only; page/surface.css must override them (verify FAILs flat pages) */
+main{display:block;overflow-x:clip}   /* a translated reveal or wide motif can never widen the page */
+main>section{padding:clamp(56px,8vw,104px) 0}
+.sec-white{background:var(--paper)} .sec-tint{background:var(--tint)}
+.sec-dark{background:var(--deep);color:oklch(0.9 0.008 var(--Hn))}
+.sec-dark h1,.sec-dark h2,.sec-dark h3{color:#fff} .sec-dark .eyebrow{color:var(--accent-lt)} .sec-dark .eyebrow::before{background:var(--accent)}
+.sec-dark .lead{color:oklch(0.86 0.01 var(--Hn))}
+.sec-head{max-width:660px;margin-bottom:clamp(36px,5vw,56px)} .sec-head p{margin-top:14px}
+/* data sits on its own plate: table.fin cells are transparent, never paint a band behind figures */
+.table-scroll{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+table.fin{width:100%;border-collapse:collapse;min-width:540px;font-size:.92rem}
+table.fin caption{text-align:left;font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;color:var(--text-mid);padding:14px 20px;border-bottom:1px solid var(--line);background:var(--card)}
+table.fin th,table.fin td{text-align:left;padding:14px 20px;border-bottom:1px solid var(--line)}
+table.fin tbody tr:last-child td{border-bottom:none}
+table.fin td.num{font-family:var(--mono);text-align:right;color:var(--ink);font-weight:500}
+table.fin thead th{font-weight:700;color:var(--ink);background:var(--card)}
+footer{background:var(--deep);color:oklch(0.76 0.008 var(--Hn));padding:56px 0 28px}
+.fls{padding:32px 0 0;font-size:.78rem;line-height:1.7;color:oklch(0.68 0.008 var(--Hn));max-width:98ch} .fls b{color:oklch(0.85 0.01 var(--Hn))}
+.fls a{color:inherit;text-decoration:underline} .fls+.fls{padding-top:14px}
+.market-note{padding-top:18px;margin-top:18px;border-top:1px solid var(--line-d);font-size:.72rem;line-height:1.7;color:oklch(0.68 0.008 var(--Hn))}
+/* reveal: hidden only once motion.js has set html.js, so no-JS and JS failure show everything.
+   Direction variants set --reveal-from (components/motion-extra.css); stagger with style="--d:.08s". */
+.reveal{transition:opacity .65s var(--ease),transform .65s var(--ease);transition-delay:var(--d,0s)}
+.js .reveal:not(.in){opacity:0;transform:var(--reveal-from,translateY(20px))}
+/* motif pause: motion.js toggles .paused on #hero-motif off-screen, in a hidden tab, or via [data-motif-toggle] */
+.paused,.paused::before,.paused::after,.paused *,.paused *::before,.paused *::after{animation-play-state:paused!important}
+@media (max-width:900px){
+  .nav-burger{display:flex}
+  .nav-links{position:absolute;top:72px;left:0;right:0;flex-direction:column;align-items:flex-start;gap:2px;background:var(--paper);border-bottom:1px solid var(--line);padding:12px 22px 20px;opacity:0;transform:translateY(-10px);visibility:hidden;pointer-events:none;transition:opacity .28s var(--ease),transform .28s var(--ease),visibility .28s;box-shadow:0 16px 30px oklch(0.3 0.02 var(--Hn)/.08)}
+  .nav-links.open{opacity:1;transform:none;visibility:visible;pointer-events:auto}
+  .nav-links li{width:100%} .nav-links a:not(.btn){display:block;padding:12px 0} .nav-links .btn{margin-top:10px;display:inline-flex}
+}
+@media (max-width:768px){ .footer-links a,.contact-col a{min-height:44px;display:flex;align-items:center} }   /* 44px tap targets; (0,1,1) so layer.css can restyle */
+@media (prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto!important}
+  .reveal{transition:none} .js .reveal:not(.in){opacity:1;transform:none}
+  .btn:hover{transform:none} [class*="motif"]{animation:none!important} [data-motif-toggle]{display:none}
+}
+/* print (D12): decoration off, every reveal shown, dark bands re-inked dark-on-white (backgrounds may not print).
+   A custom dark band must carry .sec-dark so this, its focus ring and its heading colour all apply. */
+@media print{
+  *,*::before,*::after{background-image:none!important;box-shadow:none!important;text-shadow:none!important;animation:none!important;transition:none!important}
+  .site-nav{position:static} .nav-burger,.skip-link,[data-motif-toggle]{display:none!important}
+  .js .reveal:not(.in){opacity:1!important;transform:none!important}
+  .sec-dark,.sec-dark *,.hero,.hero *,.snapshot,.snapshot *,footer,footer *{background-color:transparent!important;color:#111!important;border-color:#bbb!important}
+  .sec-white,.sec-tint,.sec-dark,footer{background-color:#fff!important;border-top:1px solid #bbb}
+  .btn{background:transparent!important;color:#111!important;border-color:#111!important}
+  .table-scroll{overflow:visible;background:#fff!important}
+  main>section{padding:28px 0}
+}
+/* forced colors: the UA repaints every band to Canvas, so bands get a system seam instead */
+@media (forced-colors:active){
+  .sec-white,.sec-tint,.sec-dark,footer{background-image:none;border-top:1px solid CanvasText}
+  .btn{border-color:ButtonText}
+  .nav-burger span{forced-color-adjust:none;background:CanvasText}
+  .table-scroll{border-color:CanvasText}
+}
+/* mc:nav (computed: the listing chip stops fitting beside logo + burger) */
+@media (max-width:433px){.nav-tick{display:none}}
+/* mc:layer */
+/* InspireMD visible layer. Archetype: centered-spine (a narrow centred measure, full-width bands, symmetric; austere, institutional).
+   Type: Montserrat (the company's own face; light 200/300 for display and numerals, 600 for labels) / Source Serif 4 (body: the long-form filing voice) / Red Hat Mono (labels, plain zeros).
+   Strategy: drenched on the real deep navy #00184C and cobalt #002F87 (hue 261.5); the real green #88C13F (hue 130.1) is a FILL and a hairline, never body text on light.
+   Signature: the hero schematic of the MicroNet mesh (zigzag strut rings, a knitted green loop lattice, debris held at the mesh) and the spine: every section hangs off one
+   centre hairline that ends in the same stent ring. Motion: base state is the FINAL state; animations only play FROM the hidden state (no fill-mode backwards, no positive delays). */
+
+/* ---------- base ---------- */
+:root{
+  --on-dark:      oklch(0.92 0.020 261.5);
+  --on-dark-mid:  oklch(0.80 0.040 261.5);
+  --spine:        var(--spine-l);
+  --ring:         oklch(0.46 0.123 130.1);
+  --pad:          clamp(56px,8vw,104px);
+  --measure:      46rem;
+}
+body{font-size:17px;line-height:1.62;font-feature-settings:"kern","liga";background:var(--paper)}
+h1,h2,h3{font-family:var(--serif);letter-spacing:-.018em}
+h1{font-weight:200}
+h2{font-weight:200;font-size:clamp(2rem,4.6vw,3.5rem);line-height:1.06;letter-spacing:-.03em}
+h3{font-weight:600;font-size:clamp(1.02rem,1.5vw,1.18rem);line-height:1.25;letter-spacing:-.005em}
+p{max-width:none}
+.eyebrow{justify-content:center;font-weight:500}
+.folio{font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink)}
+.sec-dark .folio,.hero .folio{color:var(--accent-2-lt)}
+.src-l{font-family:var(--mono);font-size:.7em;letter-spacing:0;white-space:nowrap;color:var(--accent-ink);text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px;margin-left:.2em}
+.src-l:hover{text-decoration-style:solid}
+.sec-dark .src-l,.hero .src-l{color:var(--accent-2-lt)}
+.note{font-size:.82rem;line-height:1.55;color:var(--text-mid)}
+.sec-dark .note,.hero .note{color:var(--on-dark-mid)}
+.nw{white-space:nowrap}
+.num{font-family:var(--serif);font-weight:200;font-variant-numeric:tabular-nums lining-nums;letter-spacing:-.02em}
+.btn{font-family:var(--serif);border-radius:999px;letter-spacing:.01em}
+section{position:relative}
+
+/* ---------- navigation: a dark bar so the real white-and-green mark reads ---------- */
+.site-nav{background:var(--deep);border-bottom:1px solid var(--line-d)}
+.site-nav.scrolled{box-shadow:0 8px 28px oklch(0.12 0.05 261.1 / .5)}
+.nav-brand{display:flex;align-items:center;gap:14px;min-height:44px}
+.nav-logo img{height:26px;width:auto;max-width:100%}
+.nav-tick{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-2-lt);border:1px solid var(--line-d);padding:4px 10px;border-radius:999px;white-space:nowrap}
+.nav-links a:not(.btn){font-family:var(--serif);font-weight:500;color:var(--on-dark)}
+.nav-links a:not(.btn):hover{color:#fff}
+.nav-links a.active{color:#fff;text-decoration-color:var(--accent-2)}
+.site-nav .btn-primary{background:var(--accent-2);color:var(--deep)}
+.site-nav .btn-primary:hover{background:var(--accent-2-lt)}
+.nav-burger span{background:#fff}
+@media (max-width:900px){
+  .nav-links{background:var(--deep);border-bottom:1px solid var(--line-d);box-shadow:0 16px 30px oklch(0.12 0.05 261.1 / .5)}
+}
+.sec-white,.sec-tint{--spine:var(--spine-l);--ring:oklch(0.46 0.123 130.1)}
+.sec-dark{--spine:var(--spine-d);--ring:var(--accent-2)}
+
+/* ---------- the spine: one centre hairline per section, ending in the stent ring ---------- */
+section:not(.hero)::after,.hero::after{content:'';position:absolute;left:50%;bottom:0;width:1px;height:var(--pad);background:linear-gradient(to top,var(--spine),transparent);pointer-events:none}
+.sec-head{text-align:center;max-width:54rem;margin:0 auto clamp(38px,5.5vw,64px)}
+.sec-head p{margin-inline:auto;margin-top:16px}
+.sec-head h2{text-wrap:balance}
+.sec-head .lead{color:var(--text-mid)}
+.sec-dark .sec-head .lead,.sec-abyss .sec-head .lead{color:var(--on-dark-mid)}
+.ring{display:block;width:48px;height:48px;margin:0 auto 26px;position:relative;color:var(--ring)}
+.ring::before{content:'';position:absolute;left:50%;bottom:100%;width:1px;height:var(--pad);background:linear-gradient(to bottom,transparent,var(--spine));margin-left:-.5px}
+.ring svg{width:48px;height:48px;overflow:visible;transition:transform 1.3s var(--ease) .15s}
+.ring .rp{fill:none;stroke:currentColor;stroke-width:1.4;stroke-linejoin:round;stroke-dasharray:150;stroke-dashoffset:0;transition:stroke-dashoffset 1.5s var(--ease) .25s}
+.ring .rc{fill:currentColor;transform-box:fill-box;transform-origin:center;transition:transform .7s var(--ease) .95s}
+.ring::after{content:'';position:absolute;left:50%;bottom:100%;width:2px;height:46px;margin-left:-1px;background:linear-gradient(to bottom,transparent,var(--ring));opacity:0;transition:transform 1.1s var(--ease),opacity .4s ease .8s}
+.js .sec-head.reveal:not(.in) .ring .rp{stroke-dashoffset:150}
+.js .sec-head.reveal:not(.in) .ring svg{transform:scale(.78) rotate(-14deg)}
+.js .sec-head.reveal:not(.in) .ring .rc{transform:scale(0)}
+.js .sec-head.reveal:not(.in) .ring::after{opacity:1;transform:translateY(calc(46px - var(--pad)));transition:none}
+/* the head's own slide is dropped; its three lines arrive in sequence instead */
+.sec-head.reveal{--reveal-from:translateY(0)}
+.sec-head.reveal :is(.eyebrow,h2,.lead){transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.sec-head.reveal h2{transition-delay:.14s}
+.sec-head.reveal .lead{transition-delay:.26s}
+.js .sec-head.reveal:not(.in) :is(.eyebrow,h2,.lead){opacity:0;transform:translateY(16px)}
+.sec-head .eyebrow{margin-bottom:14px}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(56px,8vw,120px) 0 0;text-align:center;overflow:hidden}
+.hero .eyebrow,.hero h1,.hero .lead{position:relative;z-index:1}
+.hero .eyebrow{color:var(--accent-2-lt)}
+.hero h1{font-size:clamp(2.4rem,7.2vw,6.1rem);line-height:1;color:#fff;margin-inline:auto;letter-spacing:-.035em}
+.hero h1 em{font-style:normal;font-weight:300;color:var(--accent-2);letter-spacing:-.03em}
+@media (min-width:701px){.hero h1 em{font-weight:500}}
+.hero .lead{color:var(--on-dark);max-width:60ch;margin:clamp(22px,3vw,34px) auto 0;font-size:clamp(1.02rem,1.5vw,1.18rem)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,460px) minmax(0,1fr);gap:clamp(18px,3.4vw,52px);align-items:center;margin-top:clamp(36px,5vw,72px);position:relative}
+.layer-note{color:var(--on-dark);text-align:left;position:relative;z-index:1}
+.layer-note.l{text-align:right}
+.layer-note h2{color:#fff;font-weight:600;font-size:clamp(1.02rem,1.5vw,1.18rem);line-height:1.25;letter-spacing:-.005em;margin:8px 0 8px}
+.layer-note p{font-size:.95rem;line-height:1.55;color:var(--on-dark-mid)}
+.layer-note .key{display:block;height:14px;width:64px;margin-bottom:6px}
+.layer-note.l .key{margin-left:auto}
+.key-strut{border-top:2.4px solid #fff;border-bottom:0;height:0;margin-top:10px;margin-bottom:12px;background:none}
+.key-knit{background-image:repeating-linear-gradient(45deg,transparent 0 3px,var(--accent-2) 3px 4px),repeating-linear-gradient(-45deg,transparent 0 3px,var(--accent-2) 3px 4px);border:1px solid var(--accent-2);border-radius:2px}
+.mesh-fig{margin:0;position:relative}
+.mesh-fig::before{content:'';position:absolute;inset:-6% -34%;z-index:-1;pointer-events:none;background:radial-gradient(closest-side,oklch(0.36 0.15 261.5 / .62),oklch(0.30 0.12 261.5 / .22) 55%,transparent)}
+.mesh-svg{display:block;width:100%;height:auto;max-height:770px;overflow:visible}
+.giant-ring{fill:none;stroke:#fff;stroke-width:1;stroke-linejoin:round;opacity:.1;vector-effect:non-scaling-stroke;transform-box:fill-box;transform-origin:center}
+@keyframes ring-turn{to{transform:rotate(360deg)}}
+.motif-ring{animation:ring-turn 260s linear infinite}
+.mesh-fig figcaption{margin-top:10px;font-size:.72rem;line-height:1.5;color:var(--on-dark-mid);text-align:center}
+.hero-facts{display:grid;grid-template-columns:repeat(4,1fr);margin-top:clamp(36px,5vw,64px);border-top:1px solid var(--line-d);position:relative;z-index:1}
+.hero-facts>div{padding:26px 18px 30px;border-right:1px solid var(--line-d);text-align:center}
+.hero-facts>div:last-child{border-right:0}
+.hero-facts .v{display:block;font-family:var(--serif);font-weight:200;font-size:clamp(2rem,4.4vw,3.7rem);line-height:1;color:#fff;letter-spacing:-.025em;font-variant-numeric:tabular-nums}
+.hero-facts .v small{font-size:.5em;font-weight:300;color:var(--on-dark-mid);letter-spacing:0}
+.hero-facts .k{display:block;margin-top:12px;font-size:.84rem;line-height:1.45;color:var(--on-dark-mid)}
+.hero-facts .flag{background:linear-gradient(to bottom,oklch(0.746 0.170 130.1 / .16),transparent 60%);box-shadow:inset 0 2px 0 var(--accent-2)}
+.hero-facts .flag .v{font-size:clamp(1.45rem,2.9vw,2.3rem);font-weight:300;color:var(--accent-2-lt);line-height:1.1}
+
+/* the schematic. Base state is the FINAL state; animation plays FROM hidden. */
+.wall{fill:none;stroke:var(--accent-lt);stroke-width:2;opacity:.55}
+.tissue{fill:oklch(0.86 0.068 261.5 / .06)}
+.plaque{fill:oklch(0.86 0.068 261.5 / .16);stroke:oklch(0.86 0.068 261.5 / .5);stroke-width:1.4}
+.pdot{fill:oklch(0.86 0.068 261.5 / .5)}
+.strut{fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.knit-band{fill:oklch(0.746 0.170 130.1 / .1)}
+.knit-loop{fill:none;stroke:var(--accent-2);stroke-width:1.15}
+.debris{fill:#fff;stroke:oklch(0.746 0.170 130.1 / .9);stroke-width:1.2}
+.flowarrow{fill:none;stroke:var(--accent-lt);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round;opacity:.5}
+@keyframes strut-draw{0%{stroke-dashoffset:var(--len)}55%,100%{stroke-dashoffset:0}}
+@keyframes knit-in{0%,30%{opacity:0}85%,100%{opacity:1}}
+@keyframes debris-hold{0%{transform:translate(-44px,0);opacity:0}10%{opacity:1}46%,84%{transform:translate(0,0);opacity:1}100%{transform:translate(0,0);opacity:0}}
+@keyframes flow-up{0%{transform:translateY(22px);opacity:0}30%{opacity:.5}100%{transform:translateY(-22px);opacity:0}}
+.motif-strut{stroke-dasharray:var(--len);animation:strut-draw 3.2s var(--ease) 1}
+.motif-knit{animation:knit-in 4.2s ease-out 1}
+.motif-debris{animation:debris-hold 9s ease-in-out infinite}
+.motif-debris.b{animation-duration:11s;animation-delay:-4s}
+.motif-debris.c{animation-duration:13s;animation-delay:-8s}
+.motif-flow{animation:flow-up 4.6s linear infinite}
+.motif-flow.b{animation-delay:-1.5s}.motif-flow.c{animation-delay:-3s}
+.paused [class*="motif"]{animation-play-state:paused}
+
+/* ---------- status board ---------- */
+.board{list-style:none;max-width:62rem;margin:0 auto;border-top:1px solid var(--line)}
+.board li{display:grid;grid-template-columns:8.6rem 10.5rem minmax(0,1fr);gap:8px 22px;padding:20px 4px;border-bottom:1px solid var(--line);align-items:baseline}
+.board time{font-family:var(--mono);font-size:.78rem;letter-spacing:.04em;color:var(--text-mid)}
+.board p{font-size:1rem;line-height:1.55;color:var(--text)}
+.board strong{font-family:var(--serif);font-weight:600;color:var(--ink)}
+.tag{display:inline-flex;align-items:center;font-family:var(--mono);font-size:.64rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;padding:5px 11px;border-radius:999px;white-space:nowrap;justify-self:start}
+.tag-ok{background:var(--accent-2);color:var(--deep)}
+.tag-open{border:1.5px solid var(--accent-ink);color:var(--accent-ink)}
+.tag-hold{background:var(--accent-ink);color:#fff}
+.tag-grave{background:var(--deep);color:#fff;box-shadow:inset 0 0 0 1.5px var(--accent-2)}
+.board-foot{max-width:62rem;margin:18px auto 0;text-align:center}
+
+/* ---------- product ---------- */
+.lede{max-width:var(--measure);margin:0 auto clamp(28px,4vw,48px);text-align:center;font-size:1.18rem;line-height:1.6;color:var(--ink)}
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:66rem;margin:0 auto}
+.tile{border:1px solid var(--line);border-top:3px solid var(--deep);padding:24px 24px 26px;border-radius:2px}
+.tile .tag{margin:2px 0 14px}
+.tile h3{font-size:1.28rem;margin-bottom:10px}
+.tile p{font-size:.98rem;line-height:1.55;color:var(--text)}
+.tile dl{margin-top:16px;border-top:1px solid var(--line)}
+.tile dl>div{display:grid;grid-template-columns:7.2rem 1fr;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.86rem}
+.tile dt{font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-mid);padding-top:3px}
+.tile dd{color:var(--text)}
+.mesh-split{display:grid;grid-template-columns:minmax(220px,300px) minmax(0,1fr);gap:clamp(24px,4vw,56px);max-width:66rem;margin:clamp(40px,6vw,72px) auto 0;align-items:center}
+.stent-fig{margin:0;background:var(--card);border:1px solid var(--line);padding:10px 10px 0;overflow:hidden}
+.stent-fig .crop{overflow:hidden;aspect-ratio:600/1390}
+.stent-fig img{width:104%;max-width:none;height:auto;mix-blend-mode:multiply}
+.stent-fig figcaption{padding:10px 4px 12px;font-size:.76rem;line-height:1.5;color:var(--text-mid)}
+.pore-fig{margin:0}
+.pore-svg{display:block;width:100%;max-width:480px;height:auto;background:var(--card);border:1px solid var(--line)}
+.pore-svg text{font-family:var(--mono);font-size:15px;fill:var(--ink);letter-spacing:.02em}
+.pore-svg .dim{stroke:var(--accent-ink);stroke-width:1.4;fill:none}
+.pore-svg .strand{fill:none;stroke:var(--deep);stroke-width:32.2}
+.pore-svg .band{fill:oklch(0.746 0.170 130.1 / .24)}
+.pore-fig figcaption{margin-top:12px}
+.says{margin-top:26px;border-top:1px solid var(--line)}
+.says li{list-style:none;padding:14px 0;border-bottom:1px solid var(--line);font-size:.98rem;line-height:1.55}
+.says li b{font-family:var(--serif);font-weight:600;color:var(--ink)}
+
+/* ---------- evidence and market ---------- */
+.stat-row{display:grid;grid-template-columns:1.55fr 1fr 1fr;gap:20px;max-width:66rem;margin:0 auto;align-items:stretch}
+.stat{border:1px solid var(--line);padding:30px 26px 26px;text-align:left;border-radius:2px}
+.stat:first-child{padding-top:34px}
+.stat:first-child .v{font-size:clamp(3.2rem,6.6vw,5.4rem);letter-spacing:-.045em}
+.stat .v{display:block;font-family:var(--serif);font-weight:200;font-size:clamp(2.2rem,4.2vw,3.2rem);line-height:1;color:var(--ink);letter-spacing:-.03em}
+.stat .k{display:block;margin-top:12px;font-family:var(--serif);font-weight:600;font-size:.95rem;color:var(--ink)}
+.stat p{margin-top:8px;font-size:.88rem;line-height:1.5;color:var(--text-mid)}
+.two-up{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:66rem;margin:20px auto 0}
+.quote-card{border-left:0;border-top:3px solid var(--accent-2);background:var(--card);padding:22px 24px;font-size:.98rem;line-height:1.55;border-radius:2px;box-shadow:0 1px 0 var(--line)}
+.quote-card b{font-family:var(--serif);font-weight:600;color:var(--ink)}
+.sub-h{max-width:66rem;margin:clamp(40px,6vw,64px) auto 18px;text-align:center}
+.table-scroll{max-width:66rem;margin-inline:auto;container-type:inline-size}
+table.fin{font-size:.92rem}
+table.fin th{font-family:var(--serif);font-weight:600}
+table.fin td.num{font-family:var(--serif);font-weight:400;font-variant-numeric:tabular-nums lining-nums}
+table.fin td.txt{color:var(--text)}
+table.trials th[scope=row]{white-space:nowrap}
+table.fin:not(.trials) thead th:not(:first-child){text-align:right}
+table.fin tbody tr:last-child th{border-bottom:0}
+table.fin caption{font-family:var(--mono)}
+table.fin tr.sub td,table.fin tr.sub th{font-weight:600;color:var(--ink);background:var(--tint)}
+table.fin tr.dim td,table.fin tr.dim th{color:var(--text-mid);font-size:.86rem}
+.tbl-note{max-width:66rem;margin:12px auto 0}
+
+/* ---------- financials ---------- */
+.fin-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);grid-template-areas:'a b' 'a c' 'd d';gap:20px;max-width:66rem;margin:0 auto}
+.pl-a{grid-area:a}.pl-b{grid-area:b}.pl-c{grid-area:c}.pl-d{grid-area:d}
+.plate{border:1px solid var(--line);padding:0;border-radius:2px;overflow:hidden;display:flex;flex-direction:column}
+.plate-h{display:flex;align-items:baseline;gap:14px;padding:16px 22px;background:var(--deep);color:#fff;font-family:var(--serif);font-size:1.05rem;font-weight:600;letter-spacing:-.005em}
+.plate-h .folio{color:var(--accent-2-lt);white-space:nowrap;flex:none}
+.plate-b{padding:22px 22px 6px;flex:1}
+.pl-a .plate-b{display:flex}
+.pl-a .bars{flex:1;align-content:space-evenly;gap:18px}
+.pl-a .bar{height:34px}
+.pl-a .bar span{font-size:.8rem}
+.pl-a .bar-row .lab{font-size:.82rem}
+.pl-a .bar-pair{gap:6px}
+.pl-d .plate-b{columns:2;column-gap:clamp(24px,4vw,48px);padding-bottom:22px}
+.pl-d .plate-b p{break-inside:avoid}
+.pl-d .plate-b p:first-child{margin-top:0}
+.plate-n{padding:4px 20px 18px;font-size:.8rem;line-height:1.55;color:var(--text-mid)}
+.bars{display:grid;gap:12px}
+.bar-row{display:grid;grid-template-columns:5.6rem 1fr;gap:12px;align-items:center}
+.bar-row .lab{font-family:var(--mono);font-size:.72rem;letter-spacing:.02em;color:var(--text-mid)}
+.bar-pair{display:grid;gap:5px}
+.bar{height:18px;position:relative;width:calc(var(--v) / var(--max) * 100%);min-width:2px;background:var(--accent-ink)}
+.bar.rev{background:var(--accent-2)}
+.bar span{position:absolute;left:calc(100% + 8px);top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.7rem;color:var(--text);white-space:nowrap}
+.bar-note{font-family:var(--mono);font-size:.68rem;color:var(--text-mid);margin-top:2px}
+.legend{display:flex;gap:18px;flex-wrap:wrap;padding:2px 20px 14px;font-size:.78rem;color:var(--text-mid)}
+.legend i{display:inline-block;width:12px;height:12px;margin-right:6px;vertical-align:-1px}
+.legend .a{background:var(--accent-2)}.legend .b{background:var(--accent-ink)}.legend .c{background:var(--tint-2)}
+.stack{display:flex;height:22px;width:calc(var(--tot) / var(--max) * 100%);min-width:6px}
+.stack>i{display:block;height:100%;width:calc(var(--s) / var(--tot) * 100%)}
+.stack .u{background:var(--accent-2)}.stack .w{background:var(--accent-ink)}
+.fin-cols{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;max-width:66rem;margin:20px auto 0}
+.tight p{margin-top:10px;font-size:.95rem;line-height:1.55}
+.tight p:first-child{margin-top:0}
+.basis{max-width:66rem;margin:20px auto 0;padding:18px 22px;background:var(--card);border:1px solid var(--line);border-radius:2px;font-size:.92rem;line-height:1.6}
+.basis b{font-family:var(--serif);font-weight:600;color:var(--ink)}
+
+/* ---------- disclosures: the gravest band ---------- */
+.sec-abyss{color:var(--on-dark)}
+.sec-abyss h2,.sec-abyss h3{color:#fff}
+.sec-abyss .src-l{color:var(--accent-2-lt)}
+.disc-lead{max-width:62rem;margin:0 auto clamp(32px,5vw,60px);padding:clamp(30px,5vw,60px) clamp(20px,4vw,48px);border-top:2px solid var(--accent-2);border-bottom:1px solid var(--line-d);text-align:center}
+.disc-lead blockquote{font-family:var(--serif);font-weight:200;font-size:clamp(1.5rem,3.5vw,2.8rem);line-height:1.2;letter-spacing:-.025em;color:#fff;text-wrap:balance}
+.disc-lead p{max-width:62ch;margin:16px auto 0;font-size:1rem;color:var(--on-dark-mid)}
+.disc-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0 clamp(24px,4vw,56px);max-width:66rem;margin:0 auto;background:linear-gradient(var(--line-d),var(--line-d)) 50% 0/1px 100% no-repeat}
+.disc{padding:30px 0 34px;border-top:1px solid var(--line-d)}
+.disc-wide{grid-column:1/-1}
+.disc-cols{columns:2;column-gap:clamp(24px,4vw,56px)}
+.disc-cols p{break-inside:avoid}
+.disc-cols p:first-of-type{margin-top:0}
+.disc .n{display:block;font-family:var(--serif);font-weight:200;font-size:2.3rem;line-height:1;letter-spacing:-.02em;color:var(--accent-2);margin-bottom:14px;font-variant-numeric:lining-nums}
+.disc h3{font-size:1.3rem;margin-bottom:12px}
+.disc p{font-size:1rem;line-height:1.65;color:var(--on-dark-mid);margin-top:12px}
+.disc p:first-of-type{margin-top:0}
+.disc b{font-family:var(--serif);font-weight:600;color:#fff}
+
+/* ---------- the record ---------- */
+.rec-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(24px,4vw,56px);max-width:66rem;margin:0 auto}
+.rec-col h3{padding-bottom:12px;border-bottom:2px solid var(--deep);font-size:1.05rem}
+.rec-list{list-style:none}
+.rec-list li{display:grid;grid-template-columns:7.6rem 1fr;gap:4px 14px;padding:14px 0;border-bottom:1px solid var(--line);font-size:.95rem;line-height:1.5}
+.rec-list time{font-family:var(--mono);font-size:.72rem;letter-spacing:.03em;color:var(--accent-ink);padding-top:3px}
+.rec-list a{color:var(--ink)}
+.doc-row a{text-decoration:underline;text-decoration-color:var(--tint-2);text-underline-offset:3px}
+.rec-more{margin-top:18px}
+
+/* ---------- contact ---------- */
+.contact-card{max-width:56rem;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:28px;align-items:start;background:var(--card);border:1px solid var(--line);border-top:3px solid var(--deep);padding:clamp(22px,3vw,34px);border-radius:2px}
+.contact-card dl>div{display:grid;grid-template-columns:8.4rem 1fr;gap:12px;padding:11px 0;border-bottom:1px solid var(--line);font-size:.97rem}
+.contact-card dt{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-mid);padding-top:4px}
+.contact-card dd a{color:var(--accent-ink);text-decoration:underline;text-underline-offset:3px}
+.contact-card .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.mark-fig{margin:0;text-align:center}
+.mark-fig img{width:132px;height:132px;margin:0 auto;border-radius:6px}
+.mark-fig figcaption{margin-top:8px;font-size:.72rem;line-height:1.45;color:var(--text-mid)}
+.btn-ink{border-color:var(--accent-ink);color:var(--accent-ink)}.btn-ink:hover{background:var(--tint)}
+
+/* ---------- small screens ---------- */
+@media (max-width:1060px){
+  .prod-grid,.stat-row{grid-template-columns:repeat(2,1fr)}
+  .stat:first-child{grid-column:1/-1}
+}
+@media (max-width:900px){
+  .hero-grid{grid-template-columns:1fr;gap:26px}
+  .hero-grid .mesh-fig{order:-1;max-width:340px;margin:0 auto}
+  .layer-note,.layer-note.l{text-align:center}
+  .layer-note .key,.layer-note.l .key{margin-left:auto;margin-right:auto}
+  .hero-facts{grid-template-columns:repeat(2,1fr)}
+  .hero-facts>div:nth-child(2){border-right:0}
+  .hero-facts>div:nth-child(-n+2){border-bottom:1px solid var(--line-d)}
+  .mesh-split{grid-template-columns:1fr}
+  .stent-fig{max-width:300px;margin:0 auto}
+  .fin-grid{grid-template-columns:1fr;grid-template-areas:'a' 'b' 'c' 'd'}
+  .rec-grid,.disc-grid,.two-up{grid-template-columns:1fr}
+  .disc-grid{background:none}
+  .disc-cols,.pl-d .plate-b{columns:1}
+  .stat-row{grid-template-columns:1fr}
+  .pl-a .plate-b,.pl-a .bars{display:block}
+  .pl-a .bars{display:grid}
+  .board li{grid-template-columns:1fr;gap:6px}
+  .contact-card{grid-template-columns:1fr}
+  .mark-fig{order:-1}
+}
+@media (max-width:640px){
+  .prod-grid,.stat-row{grid-template-columns:1fr}
+  .rec-list li{grid-template-columns:1fr}
+  .tile dl>div,.contact-card dl>div{grid-template-columns:1fr;gap:2px}
+  .bar-row{grid-template-columns:4.6rem 1fr}
+  .hero-facts .v{font-size:1.8rem}
+}
+@media (max-width:700px){
+  .hero .eyebrow{display:block}
+  .hero .eyebrow::before{display:inline-block;vertical-align:middle;margin:-2px 9px 0 0}
+  .plate-h{flex-wrap:wrap;gap:4px 12px}
+  .plate-h .folio{white-space:nowrap}
+  table.fin{min-width:0}
+  table.fin th,table.fin td{padding:11px 12px}
+  table.fin th[scope=row]{position:sticky;left:0;z-index:1;min-width:7.4rem;background:var(--card);box-shadow:1px 0 0 var(--line)}
+  table.fin caption{position:sticky;left:0;width:100cqw;box-sizing:border-box;padding:12px}
+  table.trials th[scope=col]{position:absolute;left:-9999px}
+  table.trials,table.trials tbody,table.trials tr,table.trials th,table.trials td{display:block;width:auto}
+  table.trials tr{padding:16px 16px 6px;border-bottom:1px solid var(--line)}
+  table.trials th[scope=row]{position:static;min-width:0;box-shadow:none;padding:0 0 10px;border:0;background:transparent;white-space:normal}
+  table.trials td{padding:9px 0;border:0;border-top:1px solid var(--line)}
+  table.trials td::before{content:attr(data-label);display:block;margin-bottom:3px;font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-mid)}
+}
+@media (prefers-reduced-motion:reduce){
+  .ring .rp,.ring svg,.ring .rc,.ring::after,.sec-head.reveal :is(.eyebrow,h2,.lead){transition:none}
+  .js .sec-head.reveal:not(.in) .ring .rp{stroke-dashoffset:0}
+  .js .sec-head.reveal:not(.in) .ring svg,.js .sec-head.reveal:not(.in) .ring .rc{transform:none}
+  .js .sec-head.reveal:not(.in) .ring::after{opacity:0;transform:none}
+  .js .sec-head.reveal:not(.in) :is(.eyebrow,h2,.lead){opacity:1;transform:none}
+}
+
+/* ---------- plates: stacked bars and footer ---------- */
+.stackwrap{display:flex;align-items:center;gap:10px}
+.stackwrap .tl{font-family:var(--mono);font-size:.7rem;font-weight:500;color:var(--text);white-space:nowrap}
+.bar-row .lab{line-height:1.3}
+.footer-top{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;padding-bottom:28px;border-bottom:1px solid var(--line-d)}
+.footer-logo img{height:30px;width:auto}
+.footer-links{display:flex;flex-wrap:wrap;gap:6px 24px;list-style:none}
+.footer-links a{font-family:var(--serif);font-size:.86rem;font-weight:500;color:var(--on-dark);text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--line-d)}
+.footer-links a:hover{color:#fff;text-decoration-color:var(--accent-2)}
+/* mc:surface */
+/* InspireMD surface system. Derived from the page's own signature: the MicroNet mesh is a knitted lattice, so the stocks are lattices.
+   Polarity flip (ir-build.md 5a): printed DARK ruling on white stock, BLIND WHITE ruling on tinted stock, NEGATIVE ruling on dark bands.
+   Layer order: trims first, lattice or ruling next, washes LAST (an opaque head wash on top would hide the trims; it is listed at the bottom).
+   Stocks: hero (dark: a negative diamond lattice that a centre wash fades out, plus two brand-hue fields) / status board and record (white: trims + head wash,
+   record adds a printed 24px ledger) / product (tint: BLIND WHITE diamond lattice, 22px) / evidence (white: printed 36px ledger) /
+   financials (tint: blind white COLUMN ruling, 40px and 200px, so it does not read as the product band) / disclosures (the darkest stock,
+   a one-direction negative hatch, no glow) / contact (tint with a corner field) / footer (deep with a low wash). */
+:root{
+  --sheet-edge: oklch(0.40 0.142 261.5 / 0.26);   /* trim hairlines, gutter only: the container is wider than 100% - 32px, so no glyph lands at x <= 14 */
+  --rule-ink:   oklch(0.30 0.030 261.1 / 0.05);   /* printed ruling on white stock */
+  --blind:      oklch(1 0 0 / 0.55);              /* blind ruling, minor: WHITE on tint */
+  --blind-k:    oklch(1 0 0 / 0.90);              /* blind ruling, major */
+  --sheet-neg:  oklch(0.98 0.009 261.5 / 0.05);   /* the sheet printed in negative, on dark bands */
+  --abyss:      oklch(0.150 0.060 261.1);         /* the gravest band's own stock */
+  --spine-l:    oklch(0.46 0.123 130.1 / 0.55);   /* the vessel hairline on light stock: the real green, darkened */
+  --spine-d:    oklch(0.746 0.170 130.1 / 0.55);  /* the same hairline on dark stock: the real green */
+}
+
+/* white stock: trims 11px inside each band edge, head wash last */
+.sec-white{
+  background-color:var(--paper);
+  background-image:
+    linear-gradient(to bottom, var(--sheet-edge), var(--sheet-edge)),
+    linear-gradient(to bottom, var(--sheet-edge), var(--sheet-edge)),
+    linear-gradient(to bottom, var(--tint) 0, var(--paper) 230px);
+  background-size:1px 100%, 1px 100%, 100% 100%;
+  background-position:11px 0, calc(100% - 11px) 0, 0 0;
+  background-repeat:no-repeat;
+}
+
+/* tint stock (product): BLIND WHITE diamond lattice, the mesh as a watermark. 22px pitch, white trims. */
+.sec-tint{
+  background-color:var(--tint);
+  background-image:
+    linear-gradient(to bottom, var(--blind-k), var(--blind-k)),
+    linear-gradient(to bottom, var(--blind-k), var(--blind-k)),
+    repeating-linear-gradient(45deg, transparent 0 21px, var(--blind) 21px 22px),
+    repeating-linear-gradient(-45deg, transparent 0 21px, var(--blind) 21px 22px);
+  background-size:1px 100%, 1px 100%, 100% 100%, 100% 100%;
+  background-position:11px 0, calc(100% - 11px) 0, 0 0, 0 0;
+  background-repeat:no-repeat, no-repeat, repeat, repeat;
+}
+
+/* evidence: white with a printed 36px ledger (dark ruling on white stock), head wash last. Tables and plates sit on --card, so no rule runs behind data. */
+.evidence.sec-white{
+  background-image:
+    linear-gradient(to bottom, var(--sheet-edge), var(--sheet-edge)),
+    linear-gradient(to bottom, var(--sheet-edge), var(--sheet-edge)),
+    repeating-linear-gradient(to bottom, transparent 0 35px, var(--rule-ink) 35px 36px),
+    linear-gradient(to bottom, var(--tint) 0, var(--paper) 230px);
+  background-size:1px 100%, 1px 100%, 100% 100%, 100% 230px;
+  background-position:11px 0, calc(100% - 11px) 0, 0 0, 0 0;
+}
+
+/* financials: tint with blind white COLUMN ruling, 40px minor and 200px major (a different sheet from the product band's diamonds) */
+.fin-sec.sec-tint{
+  background-image:
+    linear-gradient(to bottom, var(--blind-k), var(--blind-k)),
+    linear-gradient(to bottom, var(--blind-k), var(--blind-k)),
+    repeating-linear-gradient(to right, transparent 0 39px, var(--blind) 39px 40px),
+    repeating-linear-gradient(to right, transparent 0 199px, var(--blind-k) 199px 200px);
+  background-repeat:no-repeat, no-repeat, repeat, repeat;
+}
+
+/* record: white, a slower printed ledger (24px) under the head wash */
+.record.sec-white{
+  background-image:
+    linear-gradient(to bottom, var(--sheet-edge), var(--sheet-edge)),
+    linear-gradient(to bottom, var(--sheet-edge), var(--sheet-edge)),
+    repeating-linear-gradient(to bottom, transparent 0 23px, var(--rule-ink) 23px 24px),
+    linear-gradient(to bottom, var(--tint) 0, var(--paper) 230px);
+  background-size:1px 100%, 1px 100%, 100% 100%, 100% 230px;
+  background-position:11px 0, calc(100% - 11px) 0, 0 0, 0 0;
+}
+
+/* contact: tint with a faint brand-hue corner field, white trims */
+.contact.sec-tint{
+  background-image:
+    linear-gradient(to bottom, var(--blind-k), var(--blind-k)),
+    linear-gradient(to bottom, var(--blind-k), var(--blind-k)),
+    radial-gradient(62% 80% at 0% 100%, oklch(0.93 0.04 261.5 / 0.8), transparent 70%),
+    radial-gradient(44% 60% at 100% 0%, oklch(0.95 0.05 130.1 / 0.55), transparent 72%);
+  background-size:1px 100%, 1px 100%, 100% 100%, 100% 100%;
+  background-position:11px 0, calc(100% - 11px) 0, 0 0, 0 0;
+  background-repeat:no-repeat;
+}
+
+/* hero: the dark stock carries a NEGATIVE diamond lattice; a centre wash fades it out behind the schematic so the lattice lives at the edges, then two
+   brand-hue fields. The class carries motif, so reduced motion holds the drift still. */
+.hero.sec-dark{
+  background-color:var(--deep);
+  background-image:
+    radial-gradient(52% 58% at 50% 46%, oklch(0.233 0.101 261.1 / 0.94) 0, oklch(0.233 0.101 261.1 / 0.55) 55%, transparent 100%),
+    repeating-linear-gradient(45deg, transparent 0 27px, var(--sheet-neg) 27px 28px),
+    repeating-linear-gradient(-45deg, transparent 0 27px, var(--sheet-neg) 27px 28px),
+    radial-gradient(62% 96% at 100% 0%, oklch(0.36 0.15 261.5 / 0.85), transparent 74%),
+    radial-gradient(48% 80% at 0% 100%, oklch(0.28 0.09 261.5 / 0.7), transparent 72%);
+}
+
+/* disclosures: the gravest band, its own darkest stock. A one-direction negative hatch at 56px (not the hero's crossed lattice), trims in negative,
+   a darker head. No glow, no extra chroma. */
+.sec-abyss{
+  background-color:var(--abyss);
+  background-image:
+    linear-gradient(to bottom, var(--sheet-neg), var(--sheet-neg)),
+    linear-gradient(to bottom, var(--sheet-neg), var(--sheet-neg)),
+    repeating-linear-gradient(135deg, transparent 0 55px, var(--sheet-neg) 55px 56px),
+    linear-gradient(to bottom, oklch(0.115 0.04 261.1) 0, transparent 200px);
+  background-size:1px 100%, 1px 100%, 100% 100%, 100% 100%;
+  background-position:11px 0, calc(100% - 11px) 0, 0 0, 0 0;
+  background-repeat:no-repeat, no-repeat, repeat, no-repeat;
+}
+
+/* footer */
+footer{
+  background-image:linear-gradient(to bottom, oklch(0.27 0.095 261.1) 0, var(--deep) 240px);
+}
+
+.table-scroll{background:var(--card)}   /* table cells are transparent; never paint a band behind data */
+.plate,.tile,.stat,.row-card{background-color:var(--card)}
+
+@media print{
+  .sec-white,.sec-tint,.sec-dark,.sec-abyss,.hero.sec-dark,footer{background-image:none}
+  .hero.sec-dark,.sec-abyss,footer{background-color:#fff!important;color:#111!important}
+  .hero.sec-dark *,.sec-abyss *,footer *{background-color:transparent!important;color:#111!important}
+}
+@media (forced-colors:active){
+  /* background-image is dropped here too: the lattices are decoration, the content and the borders remain */
+  .plate,.tile,.stat,.row-card{border:1px solid CanvasText}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="concept-note">Independent design concept. Not affiliated with InspireMD, Inc. Official investor relations: <a href="https://investors.inspiremd.com/" target="_blank" rel="noopener">investors.inspiremd.com</a></div>
+
+<header class="site-nav">
+  <div class="wrap nav-inner">
+    <a class="nav-brand" href="#hero"><span class="nav-logo"><img src="img/logo.svg" alt="InspireMD" width="600" height="82"></span><span class="nav-tick">Nasdaq: NSPR</span></a>
+    <nav aria-label="Primary">
+      <button class="nav-burger" id="nav-burger" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="#product">Product</a></li>
+        <li><a href="#evidence">Evidence</a></li>
+        <li><a href="#financials">Financials</a></li>
+        <li><a href="#disclosures">Disclosures</a></li>
+        <li><a href="#record">Record</a></li>
+        <li><a class="btn btn-primary" href="#contact">Contact IR <span class="arw" aria-hidden="true">-&gt;</span></a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main" tabindex="-1">
+
+<!-- ============ 01 HERO: animated-motif. Identity first (what InspireMD makes), then the four numbers a reader needs, one of them the going-concern conclusion. The schematic is drawn from the 10-K's own description of the stent and the MicroNet mesh. ============ -->
+<section id="hero" class="hero sec-dark" aria-labelledby="hero-h">
+  <div class="wrap">
+    <p class="eyebrow reveal">InspireMD &middot; Nasdaq: NSPR &middot; Miami, Florida</p>
+    <h1 id="hero-h" class="reveal" style="--d:.05s">A carotid stent<br><em>with a mesh sleeve</em></h1>
+    <p class="lead reveal" style="--d:.1s">InspireMD describes itself as &ldquo;a medical device company specializing in the development and commercialization of products for the treatment of carotid artery disease and other vascular conditions.&rdquo; Its two commercial products, CGuard EPS and CGuard Prime, each combine a self-expanding nitinol stent with a MicroNet mesh sleeve. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 1</a></p>
+
+    <div class="hero-grid">
+      <div class="layer-note l reveal" style="--d:.12s">
+        <span class="key key-strut" aria-hidden="true"></span>
+        <p class="folio">The scaffold</p>
+        <h2>A self-expanding nitinol stent</h2>
+        <p>A stent is &ldquo;an expandable scaffold-like metallic device placed in an artery to widen the lumen and restore blood flow.&rdquo; This one expands without balloon dilation pressure or an inflation balloon. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 1</a></p>
+      </div>
+      <figure class="mesh-fig reveal" id="hero-motif" style="--d:.16s">
+        <svg class="mesh-svg" viewBox="0 0 360 600" aria-hidden="true" focusable="false">
+  <defs>
+    <pattern id="knit" width="11" height="11" patternUnits="userSpaceOnUse"><ellipse class="knit-loop" cx="5.5" cy="5.5" rx="4.7" ry="3.7"/><ellipse class="knit-loop" cx="0" cy="0" rx="4.7" ry="3.7"/><ellipse class="knit-loop" cx="11" cy="0" rx="4.7" ry="3.7"/><ellipse class="knit-loop" cx="0" cy="11" rx="4.7" ry="3.7"/><ellipse class="knit-loop" cx="11" cy="11" rx="4.7" ry="3.7"/></pattern>
+    <linearGradient id="lumen" x1="0" x2="1"><stop offset="0" stop-color="oklch(0.86 0.068 261.5)" stop-opacity=".0"/><stop offset=".5" stop-color="oklch(0.86 0.068 261.5)" stop-opacity=".07"/><stop offset="1" stop-color="oklch(0.86 0.068 261.5)" stop-opacity=".0"/></linearGradient>
+  </defs>
+  <polygon class="giant-ring motif-ring" points="180,-80 268,2 385,-25 420,90 535,125 508,242 590,330 508,418 535,535 420,570 385,685 268,658 180,740 92,658 -25,685 -60,570 -175,535 -148,418 -230,330 -148,242 -175,125 -60,90 -25,-25 92,2"/>
+  <rect class="tissue" x="0" y="0" width="60" height="600"/>
+  <rect class="tissue" x="300" y="0" width="60" height="600"/>
+  <rect x="60" y="0" width="240" height="600" fill="url(#lumen)"/>
+  <path class="wall" d="M60 0V600M300 0V600"/>
+  <path class="wall" d="M24 0V600M336 0V600" opacity=".3"/>
+  <path class="plaque" d="M60 186C76 174 98 170 114 190L114 424C98 444 76 440 60 430Z"/>
+  <circle class="pdot" cx="80" cy="236" r="2.4"/><circle class="pdot" cx="94" cy="276" r="2"/><circle class="pdot" cx="74" cy="318" r="2.6"/><circle class="pdot" cx="98" cy="356" r="2.2"/><circle class="pdot" cx="82" cy="396" r="2.4"/>
+  <g class="motif-knit">
+    <rect class="knit-band" x="114" y="112" width="22" height="396"/>
+    <rect class="knit-band" x="264" y="112" width="22" height="396"/>
+    <rect x="114" y="112" width="22" height="396" fill="url(#knit)"/>
+    <rect x="264" y="112" width="22" height="396" fill="url(#knit)"/>
+  </g>
+  <g>
+      <path class="strut motif-strut" style="--len:159" d="M140 136 L170 162 L200 136 L230 162 L260 136"/>
+      <path class="strut motif-strut" style="--len:159" d="M140 224 L170 198 L200 224 L230 198 L260 224"/>
+      <path class="strut motif-strut" style="--len:159" d="M140 260 L170 286 L200 260 L230 286 L260 260"/>
+      <path class="strut motif-strut" style="--len:159" d="M140 348 L170 322 L200 348 L230 322 L260 348"/>
+      <path class="strut motif-strut" style="--len:159" d="M140 384 L170 410 L200 384 L230 410 L260 384"/>
+      <path class="strut motif-strut" style="--len:159" d="M140 472 L170 446 L200 472 L230 446 L260 472"/>
+    <path class="strut" d="M140 136V492M260 136V492" opacity=".55" style="stroke-width:1.4"/>
+  </g>
+  <g>
+    <circle class="debris motif-debris a" cx="106" cy="244" r="5"/>
+    <circle class="debris motif-debris b" cx="107" cy="302" r="3.6"/>
+    <circle class="debris motif-debris c" cx="105" cy="358" r="4.4"/>
+  </g>
+  <g>
+    <path class="flowarrow motif-flow" d="M190 84l10-12 10 12"/>
+    <path class="flowarrow motif-flow b" d="M190 64l10-12 10 12"/>
+    <path class="flowarrow motif-flow c" d="M190 548l10-12 10 12"/>
+  </g>
+</svg>
+        <figcaption>Schematic of the design as the company describes it. The debris held at the mesh shows the stated design intent; it is not clinical data. Not to scale.</figcaption>
+      </figure>
+      <div class="layer-note reveal" style="--d:.2s">
+        <span class="key key-knit" aria-hidden="true"></span>
+        <p class="folio">The sleeve</p>
+        <h2>MicroNet, a woven polymer mesh</h2>
+        <p>Woven from a single strand of 23 &micro;m polyethylene terephthalate, with pores of 150 to 180 microns, applied to the stent &ldquo;to provide additional protection&rdquo; from plaque prolapse and embolization after deployment. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 1</a></p>
+      </div>
+    </div>
+
+    <div class="hero-facts reveal">
+      <div>
+        <span class="v">$8.98M</span>
+        <span class="k">revenue, year ended Dec&nbsp;31, 2025 (2024: $7.01M) <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 8</a></span>
+      </div>
+      <div>
+        <span class="v">$5.17M</span>
+        <span class="k">revenue, six months ended Jun&nbsp;30, 2026, unaudited, up 56.3% from $3.31M, after $0.73M of recall credits; the second quarter alone was $1.77M, down 0.4% from $1.78M <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, MD&amp;A</a></span>
+      </div>
+      <div>
+        <span class="v">$30.4M</span>
+        <span class="k">cash and marketable securities at Jun&nbsp;30, 2026, unaudited (Dec&nbsp;31, 2025: $54.2M) <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, balance sheet</a></span>
+      </div>
+      <div class="flag">
+        <span class="v">Substantial doubt</span>
+        <span class="k">about the ability to continue as a going concern, in the 10-Q for the quarter ended Jun&nbsp;30, 2026 and in the 10-K for 2025 <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, Liquidity</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 1A</a></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 02 STATUS BOARD: the read-first band. Seven dated entries, each from a filing, tagged by kind (fill, outline, solid, inset ring) rather than by an alarm colour. ============ -->
+<section id="status" class="status sec-white" aria-labelledby="status-h">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="ring" aria-hidden="true"><svg viewBox="0 0 34 34" focusable="false"><polygon class="rp" points="17.0,2.0 19.7,7.0 24.5,4.0 24.4,9.6 30.0,9.5 27.0,14.3 32.0,17.0 27.0,19.7 30.0,24.5 24.4,24.4 24.5,30.0 19.7,27.0 17.0,32.0 14.3,27.0 9.5,30.0 9.6,24.4 4.0,24.5 7.0,19.7 2.0,17.0 7.0,14.3 4.0,9.5 9.6,9.6 9.5,4.0 14.3,7.0"/><circle class="rc" cx="17" cy="17" r="2.3"/></svg></span>
+      <p class="eyebrow">Read first</p>
+      <h2 id="status-h">Seven things to know before the rest of the page</h2>
+      <p class="lead">Each is in the company&rsquo;s own filings and is linked to the one it comes from. Figures for the six months ended Jun&nbsp;30, 2026 and balances at Jun&nbsp;30, 2026 are unaudited.</p>
+    </div>
+    <ol class="board">
+      <li class="reveal">
+        <time datetime="2025-06-23">Jun&nbsp;23, 2025</time>
+        <span class="tag tag-ok">FDA approval</span>
+        <p><strong>CGuard Prime</strong> received premarket approval from the FDA, supported by the C-GUARDIANS pivotal trial. U.S. commercial launch followed in July 2025. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 1</a></p>
+      </li>
+      <li class="reveal">
+        <time datetime="2026-Q1">Q1 2026</time>
+        <span class="tag tag-open">FDA filing</span>
+        <p>The company submitted a premarket approval application to the FDA for <strong>CGuard EPS</strong>, the product it sells outside the United States. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, Item 2</a></p>
+      </li>
+      <li class="reveal">
+        <time datetime="2026-04-03">Apr 3, 2026</time>
+        <span class="tag tag-open">Financing</span>
+        <p>The company entered an equity distribution agreement with BTIG for up to $75 million of common stock. As of the 10-Q date it had sold no shares under it. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226015127/form8-k.htm" target="_blank" rel="noopener">8-K, Apr&nbsp;3, 2026</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, Liquidity</a></p>
+      </li>
+      <li class="reveal">
+        <time datetime="2026-05-01">May 1, 2026</time>
+        <span class="tag tag-grave">Recall</span>
+        <p>The company announced a voluntary U.S. recall of the <strong>CGuard Prime 135 cm delivery system</strong> after a controlled launch showed its technical success in carotid artery stenting did not meet performance expectations. The recall does not include the stent implant. The same release said the company was pausing commercialization of the CGuard Prime delivery system and withdrawing its full-year 2026 revenue guidance. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226020891/form8-k.htm" target="_blank" rel="noopener">8-K, May&nbsp;1, 2026</a></p>
+      </li>
+      <li class="reveal">
+        <time datetime="2026-07-17">Jul 17, 2026</time>
+        <span class="tag tag-grave">Nasdaq notice</span>
+        <p>Nasdaq notified the company that its closing bid price had been below $1.00 for 30 consecutive business days. The company has until Jan 13, 2027 to regain compliance. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226034430/form8-k.htm" target="_blank" rel="noopener">8-K, Jul&nbsp;23, 2026</a></p>
+      </li>
+      <li class="reveal">
+        <time datetime="2026-08-14">Aug 14, 2026</time>
+        <span class="tag tag-grave">Going concern</span>
+        <p>The 10-Q says the company does not have sufficient resources to fund operations for at least the next 12 months, and that there is substantial doubt about its ability to continue as a going concern. The 10-K filed Mar&nbsp;18, 2026 reached the same conclusion, and the auditor&rsquo;s report on the 2025 financial statements includes an explanatory paragraph on going concern. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, Liquidity</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 1A</a></p>
+      </li>
+      <li class="reveal">
+        <time datetime="2026-09-21">Sep 21, 2026</time>
+        <span class="tag tag-hold">Warrants</span>
+        <p>For certain holders, including directors, the company amended 50% of their Series J warrants and all of their Series K warrants to an exercise price of $0.7674 and an end date of the earlier of May&nbsp;15, 2028 and 20 trading days after it announces FDA approval of CGuard Prime 80 cm. Series K warrants that were not amended are scheduled to expire Oct&nbsp;28, 2026. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226043488/form8-k.htm" target="_blank" rel="noopener">8-K, Sep&nbsp;21, 2026</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, Liquidity</a></p>
+      </li>
+    </ol>
+    <p class="note board-foot">The tags mark the kind of item, not a judgment: filled green is an approval, an outline is a filing or a financing, solid blue is a change to terms, and a ringed dark tag is a matter covered in full under Disclosures.</p>
+  </div>
+</section>
+<!-- ============ 03 PRODUCT: overview + platform + how it works + differentiators, merged. Three products by status, then the mesh itself: the company's one real product image beside the pore drawn to the stated dimensions. Every "sets it apart" line is the company's claim and says so. ============ -->
+<section id="product" class="product sec-tint" aria-labelledby="prod-h">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="ring" aria-hidden="true"><svg viewBox="0 0 34 34" focusable="false"><polygon class="rp" points="17.0,2.0 19.7,7.0 24.5,4.0 24.4,9.6 30.0,9.5 27.0,14.3 32.0,17.0 27.0,19.7 30.0,24.5 24.4,24.4 24.5,30.0 19.7,27.0 17.0,32.0 14.3,27.0 9.5,30.0 9.6,24.4 4.0,24.5 7.0,19.7 2.0,17.0 7.0,14.3 4.0,9.5 9.6,9.6 9.5,4.0 14.3,7.0"/><circle class="rc" cx="17" cy="17" r="2.3"/></svg></span>
+      <p class="eyebrow">The product</p>
+      <h2 id="prod-h">One stent design, three products at different stages</h2>
+    </div>
+    <p class="lede reveal">The company says its products treat carotid artery disease, in which plaque builds up in the artery wall and narrows the artery. Plaque debris breaking off and travelling to the brain is, in the 10-K&rsquo;s words, one of the &ldquo;significant causes of stroke.&rdquo; <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 1</a></p>
+
+    <div class="prod-grid">
+      <article class="tile reveal">
+        <span class="tag tag-open">Sold outside the U.S.</span>
+        <h3>CGuard EPS</h3>
+        <p>The CGuard Carotid Embolic Prevention System joins a self-expanding nitinol stent and a MicroNet mesh sleeve in a single device. It is marketed in over 30 countries outside the United States through a network of distributors.</p>
+        <dl>
+          <div><dt>Regulatory</dt><dd>CE Mark recertified under the EU MDR in January 2024. PMA submitted to the FDA in Q1 2026.</dd></div>
+          <div><dt>Source</dt><dd><a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 1</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, Item 2</a></dd></div>
+        </dl>
+      </article>
+      <article class="tile reveal" style="--d:.06s">
+        <span class="tag tag-ok">PMA approved Jun&nbsp;23, 2025</span>
+        <h3>CGuard Prime</h3>
+        <p>The same stent and MicroNet mesh with a differentiated deployment mechanism, sold in the United States through the company&rsquo;s direct salesforce. The 135 cm delivery system has been under a voluntary U.S. recall since May 2026 (see Disclosures).</p>
+        <dl>
+          <div><dt>Regulatory</dt><dd>FDA PMA Jun&nbsp;23, 2025. MDR CE Mark Jun&nbsp;12, 2025.</dd></div>
+          <div><dt>In trial</dt><dd>The 80 cm version for TCAR, in CGUARDIANS II and III.</dd></div>
+          <div><dt>Source</dt><dd><a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 1</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, Item 2</a></dd></div>
+        </dl>
+      </article>
+      <article class="tile reveal" style="--d:.12s">
+        <span class="tag tag-open">In development</span>
+        <h3>SwitchGuard NPS</h3>
+        <p>A Class II neuroprotection system the company has developed, which the 10-K says is &ldquo;subject to regulatory approval.&rdquo; It is paired with CGuard Prime in the CGUARDIANS III pivotal trial to enable flow-reversal neuroprotection during TCAR.</p>
+        <dl>
+          <div><dt>Regulatory</dt><dd>The 10-K reports FDA approval of the CGUARDIANS III IDE on Jun&nbsp;6, 2025. An IDE approved in May 2026 includes next generation enhancements from the prior approval.</dd></div>
+          <div><dt>Source</dt><dd><a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 1</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, Item 2</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226020891/form8-k.htm" target="_blank" rel="noopener">8-K, May&nbsp;1, 2026</a></dd></div>
+        </dl>
+      </article>
+    </div>
+
+    <div class="mesh-split">
+      <figure class="stent-fig reveal">
+        <div class="crop"><img src="img/stent-dual-layer.webp" width="600" height="1457" loading="lazy" alt="A CGuard stent: a zigzag nitinol frame with a fine knitted mesh sleeve around it, shown against white."></div>
+        <figcaption>The CGuard stent with its MicroNet mesh. A company image, from its website.</figcaption>
+      </figure>
+      <div class="reveal" style="--d:.08s">
+        <p class="folio">The mesh, drawn to the stated size</p>
+        <h3 style="margin:8px 0 12px;font-size:1.3rem">What the 10-K says about the pore</h3>
+        <figure class="pore-fig">
+          <svg class="pore-svg" viewBox="0 0 520 344" role="img" aria-labelledby="pore-t pore-d">
+  <title id="pore-t">One MicroNet opening drawn to the stated dimensions</title>
+  <desc id="pore-d">A single mesh opening 165 micrometres wide, within the stated 150 to 180 micrometre range, bounded by a 23 micrometre strand, with a 100 micrometre scale bar.</desc>
+  <rect class="strand" x="40.4" y="40.4" width="263.2" height="263.2" rx="64" style="fill:none"/>
+  <line class="dim" x1="62.5" y1="230.0" x2="281.5" y2="230.0"/>
+  <path class="dim" d="M62.5 223.0v14M281.5 223.0v14"/>
+  <text x="172" y="158" text-anchor="middle">aperture</text>
+  <text x="172" y="190" text-anchor="middle">150 to 180 µm</text>
+  <line class="dim" x1="82" y1="24.3" x2="82" y2="56.5"/>
+  <path class="dim" d="M76 24.3h12M76 56.5h12"/>
+  <path class="dim" d="M94 40.4H356"/>
+  <text x="362" y="47.4">strand 23 µm</text>
+  <line class="dim" x1="338" y1="296" x2="478.0" y2="296"/>
+  <path class="dim" d="M338 289v14M478.0 289v14"/>
+  <text x="338" y="274">100 µm</text>
+</svg>
+          <figcaption class="note">Drawn at 1.4 pixels per micrometre: the strand is 23 &micro;m and the opening is drawn at 165 &micro;m, the middle of the stated 150 to 180 &micro;m. The 10-K says the pore size is &ldquo;designed to maximize protection&rdquo; by &ldquo;significantly limiting the size of any embolic debris&rdquo; that can pass through the mesh. It does not say the mesh stops all debris. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 1</a></figcaption>
+        </figure>
+        <ul class="says">
+          <li><b>The company&rsquo;s claim.</b> MicroNet &ldquo;is designed to reduce plaque prolapse and embolic events.&rdquo; <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 1</a></li>
+          <li><b>The company&rsquo;s comparison.</b> It says CGuard &ldquo;has demonstrated the lowest 30-day and one-year composite adverse event rates compared to historical carotid stent data.&rdquo; That is a comparison with historical data, not a head-to-head trial. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 1</a></li>
+          <li><b>The company&rsquo;s view of a new use.</b> In acute stroke with tandem lesions, it says the &ldquo;flexible, low-metal-burden design and MicroNet mesh&rdquo; may offer advantages where traditional embolic protection cannot be used. That use is in an early feasibility study. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, Item 2</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============ 04 EVIDENCE: problem + markets + traction merged. The market figures are the company's own estimate with its stated source (no TAM of ours); the trial ledger states each result as filed, with what is not yet reported. ============ -->
+<section id="evidence" class="evidence sec-white" aria-labelledby="evi-h">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="ring" aria-hidden="true"><svg viewBox="0 0 34 34" focusable="false"><polygon class="rp" points="17.0,2.0 19.7,7.0 24.5,4.0 24.4,9.6 30.0,9.5 27.0,14.3 32.0,17.0 27.0,19.7 30.0,24.5 24.4,24.4 24.5,30.0 19.7,27.0 17.0,32.0 14.3,27.0 9.5,30.0 9.6,24.4 4.0,24.5 7.0,19.7 2.0,17.0 7.0,14.3 4.0,9.5 9.6,9.6 9.5,4.0 14.3,7.0"/><circle class="rc" cx="17" cy="17" r="2.3"/></svg></span>
+      <p class="eyebrow">Market and evidence</p>
+      <h2 id="evi-h">The market estimate, and the trials behind the products</h2>
+      <p class="lead">The market numbers are the company&rsquo;s estimates and rest on a 2021 third-party report plus internal estimates. This page adds none of its own.</p>
+    </div>
+
+    <div class="stat-row">
+      <div class="stat reveal">
+        <span class="v">$1.3B</span>
+        <span class="k">Addressable market estimate</span>
+        <p>Assuming full penetration of the intervention caseload. The same sources give $9.3 billion for everyone diagnosed with high-grade carotid artery stenosis. The 10-K cites a Health Research International report dated Sep&nbsp;13, 2021 and internal estimates. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 1</a></p>
+      </div>
+      <div class="stat reveal" style="--d:.06s">
+        <span class="v">394,000</span>
+        <span class="k">Carotid interventions in 2022</span>
+        <p>Of about 3 million people aged 50 to 89 estimated to have been diagnosed with high-grade carotid artery disease, per the same report as cited in the 10-K. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 1</a></p>
+      </div>
+      <div class="stat reveal" style="--d:.12s">
+        <span class="v">~155,000</span>
+        <span class="k">Annual U.S. carotid procedures</span>
+        <p>The figure the 10-K uses for the U.S. opportunity behind its plan to expand its direct salesforce. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 1</a></p>
+      </div>
+    </div>
+    <div class="two-up">
+      <div class="quote-card reveal">
+        <b>Medicare coverage.</b> In October 2023 the Centers for Medicare &amp; Medicaid Services issued its final national coverage determination, expanding coverage of carotid artery stenting and TCAR to asymptomatic and standard-risk patients. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 1</a>
+      </div>
+      <div class="quote-card reveal" style="--d:.06s">
+        <b>CREST-2, not a company study.</b> The NIH-sponsored trial across 155 centers reported in November 2025 that stenting plus medical therapy had a significantly lower stroke risk than intensive medical management alone in patients with severe asymptomatic stenosis; in a separate arm, endarterectomy did not show a significant benefit. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 1</a>
+      </div>
+    </div>
+
+    <div class="sub-h reveal">
+      <p class="folio">The trials</p>
+      <h3 style="margin-top:8px;font-size:1.4rem;font-weight:300">What each study has reported</h3>
+    </div>
+    <div class="table-scroll reveal">
+      <table class="fin trials">
+        <caption>Clinical studies, as the 10-K and 10-Q describe them</caption>
+        <thead><tr><th scope="col">Study</th><th scope="col">Device and setting</th><th scope="col">Status as filed</th><th scope="col">What the filing reports</th></tr></thead>
+        <tbody>
+          <tr>
+            <th scope="row">C-GUARDIANS<br><span class="note">pivotal</span></th>
+            <td class="txt" data-label="Device and setting">CGuard stent in carotid artery stenting; supported the CGuard Prime PMA. CGuard Prime was used in 32 of the 316 patients, from April 2023</td>
+            <td class="txt" data-label="Status as filed">Completed</td>
+            <td class="txt" data-label="What the filing reports">316 patients in the U.S. and Europe. Death, stroke or myocardial infarction at 30 days (hierarchical DSMI): 0.95% intent-to-treat and 0.63% per protocol. At one year, announced in May 2024, DSMI at 30 days plus ipsilateral stroke from day 31 to day 365 was 1.95% in the intent-to-treat analysis (Kaplan-Meier method); the 10-K gives 1.71% as the primary endpoint rate per protocol, and its CGuard Prime overview gives 1.93% for DSMI or ipsilateral stroke through one year. Three patients had major adverse events by 30 days: one who did not take dual antiplatelet therapy (a protocol violation) had a major stroke and died, and two had strokes. There was no myocardial infarction. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 1</a></td>
+          </tr>
+          <tr>
+            <th scope="row">CGUARDIANS II<br><span class="note">pivotal</span></th>
+            <td class="txt" data-label="Device and setting">CGuard Prime 80 cm in TCAR, with an established neuroprotection device</td>
+            <td class="txt" data-label="Status as filed">Enrollment completed in Q1 2026</td>
+            <td class="txt" data-label="What the filing reports">Summary 30-day outcomes announced in June 2026: acute device success of 100% with no major adverse events. Longer follow-up is not yet reported. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, Item 2</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226028221/form8-k.htm" target="_blank" rel="noopener">8-K, Jun&nbsp;11, 2026</a></td>
+          </tr>
+          <tr>
+            <th scope="row">CGUARDIANS III<br><span class="note">pivotal</span></th>
+            <td class="txt" data-label="Device and setting">CGuard Prime 80 cm with SwitchGuard NPS, for flow-reversal neuroprotection during TCAR</td>
+            <td class="txt" data-label="Status as filed">FDA IDE approved Jun&nbsp;6, 2025; an IDE with next generation enhancements approved in May 2026; enrollment of the first patient announced in June 2026</td>
+            <td class="txt" data-label="What the filing reports">No results reported. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 1</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, Item 2</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226020891/form8-k.htm" target="_blank" rel="noopener">8-K, May&nbsp;1, 2026</a></td>
+          </tr>
+          <tr>
+            <th scope="row">Early feasibility<br><span class="note">with the Jacobs Institute</span></th>
+            <td class="txt" data-label="Device and setting">CGuard Prime in acute ischemic stroke with tandem lesions</td>
+            <td class="txt" data-label="Status as filed">Under way</td>
+            <td class="txt" data-label="What the filing reports">No results reported in the filings reviewed. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, Item 2</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note tbl-note reveal">DSMI is death, stroke or myocardial infarction. The study results are the company&rsquo;s description of its trials in its filings; this page does not interpret them. Each row links the filings it comes from.</p>
+  </div>
+</section>
+<!-- ============ 05 FINANCIALS: posture commercial. Plates draw reported values only (sourced, so bars are allowed). The annual plate is 2021 to 2025 because those years share one XBRL concept (MIXED_REVENUE_BASIS) and the company was Saguaro Resources until April 2011 (PREDECESSOR_ENTITY), so nothing older is drawn or implied. ============ -->
+<section id="financials" class="fin-sec sec-tint" aria-labelledby="fin-h">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="ring" aria-hidden="true"><svg viewBox="0 0 34 34" focusable="false"><polygon class="rp" points="17.0,2.0 19.7,7.0 24.5,4.0 24.4,9.6 30.0,9.5 27.0,14.3 32.0,17.0 27.0,19.7 30.0,24.5 24.4,24.4 24.5,30.0 19.7,27.0 17.0,32.0 14.3,27.0 9.5,30.0 9.6,24.4 4.0,24.5 7.0,19.7 2.0,17.0 7.0,14.3 4.0,9.5 9.6,9.6 9.5,4.0 14.3,7.0"/><circle class="rc" cx="17" cy="17" r="2.3"/></svg></span>
+      <p class="eyebrow">Financials</p>
+      <h2 id="fin-h">Revenue was $8.98M in the year ended Dec&nbsp;31, 2025, and the net loss was $48.8M</h2>
+      <p class="lead">In the six months ended Jun&nbsp;30, 2026 (unaudited), revenue was $5.17M and the net loss was $28.0M. Amounts are US dollars as filed; the filings state thousands. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 8</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, financial statements</a></p>
+    </div>
+
+    <div class="fin-grid">
+      <div class="plate pl-a reveal">
+        <div class="plate-h"><span class="folio">Plate A</span> Revenue and net loss, USD millions</div>
+        <div class="plate-b">
+          <div class="bars">
+            <div class="bar-row"><span class="lab">2021</span><div class="bar-pair">
+              <div class="bar rev" style="--v:4.50;--max:62"><span>$4.50M</span></div>
+              <div class="bar" style="--v:14.92;--max:62"><span>$14.92M</span></div></div></div>
+            <div class="bar-row"><span class="lab">2022</span><div class="bar-pair">
+              <div class="bar rev" style="--v:5.17;--max:62"><span>$5.17M</span></div>
+              <div class="bar" style="--v:18.49;--max:62"><span>$18.49M</span></div></div></div>
+            <div class="bar-row"><span class="lab">2023</span><div class="bar-pair">
+              <div class="bar rev" style="--v:6.21;--max:62"><span>$6.21M</span></div>
+              <div class="bar" style="--v:19.92;--max:62"><span>$19.92M</span></div></div></div>
+            <div class="bar-row"><span class="lab">2024</span><div class="bar-pair">
+              <div class="bar rev" style="--v:7.01;--max:62"><span>$7.01M</span></div>
+              <div class="bar" style="--v:32.01;--max:62"><span>$32.01M</span></div></div></div>
+            <div class="bar-row"><span class="lab">2025</span><div class="bar-pair">
+              <div class="bar rev" style="--v:8.98;--max:62"><span>$8.98M</span></div>
+              <div class="bar" style="--v:48.79;--max:62"><span>$48.79M</span></div></div></div>
+          </div>
+        </div>
+        <div class="legend"><span><i class="a"></i>Revenue</span><span><i class="b"></i>Net loss</span></div>
+        <p class="plate-n">Years ended December 31. The 2024 and 2025 bars are in the 10-K for 2025; the 2021 to 2023 bars come from the SEC&rsquo;s XBRL data for the company&rsquo;s earlier annual reports, which are not among the filings linked on this page. Only 2021 to 2025 are drawn: those years use one XBRL revenue tag, and earlier years cross three, so they are not like-for-like. EDGAR&rsquo;s company record shows the name Saguaro Resources, Inc. until April 2011; no history before then is implied. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 8</a> <a class="src-l" href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001433607&amp;type=&amp;dateb=&amp;owner=include&amp;count=40" target="_blank" rel="noopener">EDGAR</a></p>
+      </div>
+
+      <div class="plate pl-b reveal" style="--d:.06s">
+        <div class="plate-h"><span class="folio">Plate B</span> Revenue by location, USD millions</div>
+        <div class="plate-b">
+          <div class="bars">
+            <div class="bar-row"><span class="lab">Six months to Jun&nbsp;30, 2025</span><div class="stackwrap">
+              <div class="stack" style="--tot:3.307;--max:6.2"><i class="u" style="--s:0.054"></i><i class="w" style="--s:3.253"></i></div><b class="tl">$3.31M</b></div></div>
+            <div class="bar-row"><span class="lab">Six months to Jun&nbsp;30, 2026</span><div class="stackwrap">
+              <div class="stack" style="--tot:5.169;--max:6.2"><i class="u" style="--s:0.827"></i><i class="w" style="--s:4.342"></i></div><b class="tl">$5.17M</b></div></div>
+          </div>
+        </div>
+        <div class="legend"><span><i class="a"></i>United States</span><span><i class="b"></i>International</span></div>
+        <p class="plate-n">Unaudited; by the location of the customer. United States: $0.83M against $0.05M. International: $4.34M against $3.25M, up 33%. In the three months to Jun&nbsp;30, 2026 total revenue was $1.77M, down 0.4% from $1.78M; U.S. revenue was <span class="nw">&minus;$0.35M</span> after $0.73M of recall credits, and international revenue was $2.12M, up 21%. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, MD&amp;A</a></p>
+      </div>
+
+      <div class="plate pl-c reveal">
+        <div class="plate-h"><span class="folio">Plate C</span> Cash and marketable securities, USD millions</div>
+        <div class="plate-b">
+          <div class="bars">
+            <div class="bar-row"><span class="lab">Dec&nbsp;31, 2025</span><div class="stackwrap">
+              <div class="stack" style="--tot:54.211;--max:60"><i class="u" style="--s:8.939"></i><i class="w" style="--s:45.272"></i></div><b class="tl">$54.2M</b></div></div>
+            <div class="bar-row"><span class="lab">Jun&nbsp;30, 2026</span><div class="stackwrap">
+              <div class="stack" style="--tot:30.421;--max:60"><i class="u" style="--s:15.149"></i><i class="w" style="--s:15.272"></i></div><b class="tl">$30.4M</b></div></div>
+          </div>
+        </div>
+        <div class="legend"><span><i class="a"></i>Cash and cash equivalents</span><span><i class="b"></i>Marketable securities</span></div>
+        <p class="plate-n">Jun&nbsp;30, 2026 is unaudited. Net cash used in operating activities was $23.2M in the six months (2025: $17.1M) and $35.1M in the year ended Dec&nbsp;31, 2025. The accumulated deficit was $330.3M. This page makes no estimate of how long the cash lasts; the company&rsquo;s own conclusion is under Disclosures. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, financial statements</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 8</a></p>
+      </div>
+      <div class="plate pl-d reveal tight" style="--d:.06s">
+        <div class="plate-h"><span class="folio">Inside the numbers</span> What the figures include</div>
+        <div class="plate-b">
+          <p>Revenue for the year ended Dec&nbsp;31, 2025 rose 28.1% (derived), while operating expenses rose to $52.3M from $35.0M. Selling and marketing was $16.6M against $6.1M. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 8</a></p>
+          <p>In the six months ended Jun&nbsp;30, 2026 (unaudited) the gross result was a loss of $0.09M. It includes $0.73M of recall credits and $1.1M of inventory impairment and obsolescence charges on the CGuard Prime delivery system; for the second quarter alone the 10-Q gives about $0.61M of inventory impairment. Share-based compensation was $4.3M (2025: $5.9M). <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, MD&amp;A</a></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="sub-h reveal"><p class="folio">Statements of operations</p></div>
+    <div class="table-scroll reveal">
+      <table class="fin">
+        <caption>USD millions, as filed (the filings state thousands)</caption>
+        <thead><tr><th scope="col"></th><th scope="col">Year ended Dec&nbsp;31, 2025</th><th scope="col">Year ended Dec&nbsp;31, 2024</th><th scope="col">Six months ended Jun&nbsp;30, 2026, unaudited</th><th scope="col">Six months ended Jun&nbsp;30, 2025, unaudited</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Revenues</th><td class="num">8.979</td><td class="num">7.009</td><td class="num">5.169</td><td class="num">3.307</td></tr>
+          <tr><th scope="row">Cost of revenues</th><td class="num">6.330</td><td class="num">5.503</td><td class="num">5.256</td><td class="num">2.702</td></tr>
+          <tr class="sub"><th scope="row">Gross profit (loss)</th><td class="num">2.649</td><td class="num">1.506</td><td class="num">-0.087</td><td class="num">0.605</td></tr>
+          <tr class="dim"><th scope="row">Gross margin, % (derived)</th><td class="num">29.5</td><td class="num">21.5</td><td class="num">-1.7</td><td class="num">18.3</td></tr>
+          <tr><th scope="row">Research and development</th><td class="num">15.003</td><td class="num">13.634</td><td class="num">9.058</td><td class="num">7.893</td></tr>
+          <tr><th scope="row">Selling and marketing</th><td class="num">16.553</td><td class="num">6.069</td><td class="num">10.401</td><td class="num">6.922</td></tr>
+          <tr><th scope="row">General and administrative</th><td class="num">20.707</td><td class="num">15.306</td><td class="num">8.877</td><td class="num">10.269</td></tr>
+          <tr class="sub"><th scope="row">Loss from operations</th><td class="num">-49.614</td><td class="num">-33.503</td><td class="num">-28.423</td><td class="num">-24.479</td></tr>
+          <tr><th scope="row">Financial income, net</th><td class="num">0.891</td><td class="num">1.557</td><td class="num">0.410</td><td class="num">0.162</td></tr>
+          <tr><th scope="row">Tax expenses</th><td class="num">0.063</td><td class="num">0.059</td><td class="num">&ndash;</td><td class="num">&ndash;</td></tr>
+          <tr class="sub"><th scope="row">Net loss</th><td class="num">-48.786</td><td class="num">-32.005</td><td class="num">-28.013</td><td class="num">-24.317</td></tr>
+          <tr class="dim"><th scope="row">Net loss per share, basic and diluted, USD</th><td class="num">-0.76</td><td class="num">-0.76</td><td class="num">-0.33</td><td class="num">-0.48</td></tr>
+          <tr class="dim"><th scope="row">Weighted shares used, millions (include pre-funded warrants)</th><td class="num">64.3</td><td class="num">41.9</td><td class="num">84.2</td><td class="num">50.5</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note tbl-note reveal">Sources: 10-K for the years; 10-Q for the six months, which are unaudited. Negative figures are losses; a dash means the statement shows no such line. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 8</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, financial statements</a></p>
+
+    <div class="sub-h reveal"><p class="folio">Balance sheet</p></div>
+    <div class="table-scroll reveal">
+      <table class="fin">
+        <caption>USD millions, as filed (the filings state thousands)</caption>
+        <thead><tr><th scope="col"></th><th scope="col">Jun&nbsp;30, 2026, unaudited</th><th scope="col">Dec&nbsp;31, 2025</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Cash and cash equivalents</th><td class="num">15.149</td><td class="num">8.939</td></tr>
+          <tr><th scope="row">Marketable securities</th><td class="num">15.272</td><td class="num">45.272</td></tr>
+          <tr><th scope="row">Total current assets</th><td class="num">36.628</td><td class="num">61.471</td></tr>
+          <tr class="sub"><th scope="row">Total assets</th><td class="num">44.641</td><td class="num">69.404</td></tr>
+          <tr><th scope="row">Total current liabilities</th><td class="num">9.646</td><td class="num">10.712</td></tr>
+          <tr><th scope="row">Total liabilities</th><td class="num">13.130</td><td class="num">14.203</td></tr>
+          <tr class="sub"><th scope="row">Total equity</th><td class="num">31.511</td><td class="num">55.201</td></tr>
+          <tr class="dim"><th scope="row">Accumulated deficit</th><td class="num">-330.305</td><td class="num">-302.292</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="basis reveal"><b>Share counts and their bases.</b> 46,921,061 common shares were issued and outstanding at Jun&nbsp;30, 2026 (balance sheet) and 46,489,118 at Aug&nbsp;14, 2026 (10-Q cover); pre-funded warrants are in neither. The weighted average of 84,236,742 shares used for loss per share includes pre-funded warrants, so it is not the common shares outstanding. Authorized common shares were 250,000,000 at Jun&nbsp;30, 2026, up from 150,000,000 at Dec&nbsp;31, 2025; stockholders approved the increase on Jun&nbsp;3, 2026. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, balance sheet</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226027045/form8-k.htm" target="_blank" rel="noopener">8-K, Jun&nbsp;3, 2026</a></div>
+  </div>
+</section>
+<!-- ============ 06 DISCLOSURES: the gravest band, its own darkest stock. Eight matters, each in the filings' own words with its source: going concern, recall, Nasdaq, dilution, regulatory dependencies, one factory, leadership, concentration. Order and voice are fixed; nothing is softened and no turnaround is implied. ============ -->
+<section id="disclosures" class="disclosures sec-dark sec-abyss" aria-labelledby="disc-h">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="ring" aria-hidden="true"><svg viewBox="0 0 34 34" focusable="false"><polygon class="rp" points="17.0,2.0 19.7,7.0 24.5,4.0 24.4,9.6 30.0,9.5 27.0,14.3 32.0,17.0 27.0,19.7 30.0,24.5 24.4,24.4 24.5,30.0 19.7,27.0 17.0,32.0 14.3,27.0 9.5,30.0 9.6,24.4 4.0,24.5 7.0,19.7 2.0,17.0 7.0,14.3 4.0,9.5 9.6,9.6 9.5,4.0 14.3,7.0"/><circle class="rc" cx="17" cy="17" r="2.3"/></svg></span>
+      <p class="eyebrow">Disclosures</p>
+      <h2 id="disc-h">What the filings say about risk</h2>
+      <p class="lead">Eight matters a reader should have in front of them. Each is in the company&rsquo;s own filings and carries its source. Figures for the six months ended Jun&nbsp;30, 2026 and balances at Jun&nbsp;30, 2026 are unaudited.</p>
+    </div>
+
+    <div class="disc-lead reveal">
+      <p class="folio" style="margin-bottom:14px">01 &middot; Going concern: the company&rsquo;s conclusion</p>
+      <blockquote>&ldquo;we believe we do not have sufficient resources to fund operations for at least the next 12 months. Therefore, there is substantial doubt about our ability to continue as a going concern.&rdquo;</blockquote>
+      <p>That is from the Liquidity discussion in the 10-Q for the quarter ended Jun&nbsp;30, 2026. The same filing reports an accumulated deficit of $330.3M, a net loss of $28.0M and net cash used in operating activities of $23.2M for the six months, against cash and marketable securities of $30.4M. The stated plans are &ldquo;continued commercialization of our products and raising capital through sale of additional equity securities, debt or capital inflows from strategic partnerships and exercise of warrants.&rdquo; The company adds that &ldquo;there are no assurances&rdquo; it will obtain the financing it needs, and that if it does not it &ldquo;may need to reduce activities, curtail or cease operations.&rdquo; The 10-K for 2025, filed Mar&nbsp;18, 2026, reached the same conclusion, and the report of its auditor, Kesselman &amp; Kesselman, on the 2025 financial statements includes an explanatory paragraph on the company&rsquo;s ability to continue as a going concern. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, Liquidity</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 1A</a></p>
+    </div>
+
+    <div class="disc-grid">
+      <article class="disc reveal">
+        <span class="n">02</span>
+        <h3>A U.S. recall of the CGuard Prime delivery system</h3>
+        <p>On May&nbsp;1, 2026 the company announced a voluntary U.S. recall of the CGuard Prime 135 cm delivery system after a controlled launch showed that its technical success in carotid artery stenting &ldquo;has not met performance expectations.&rdquo; The recall covers the delivery system, not the stent implant. The company&rsquo;s assessment &ldquo;did not identify new safety concerns for patients who had previously received a CGuard implant,&rdquo; and by Jun&nbsp;30, 2026 substantially all affected products had been returned and credits issued. The same release said the company was pausing commercialization of the CGuard Prime delivery system and withdrawing its full-year 2026 revenue guidance. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226020891/form8-k.htm" target="_blank" rel="noopener">8-K, May&nbsp;1, 2026</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, Note 1</a></p>
+        <p>In the quarter ended Jun&nbsp;30, 2026 the recall reduced revenue by $0.73M, U.S. revenue was <span class="nw">&minus;$0.35M</span>, and about $0.61M of inventory was impaired; the gross margin was negative 43.7%. The 10-Q says the company cannot assure that the FDA will be satisfied with its corrective actions, that until the issues are resolved to the FDA&rsquo;s satisfaction it &ldquo;may be unable to resume commercialization of CGuard Prime in the United States,&rdquo; and that such requirements could &ldquo;delay or prevent FDA acceptance or approval&rdquo; of the proposed PMA supplement, which it expects to submit in the fourth quarter of 2026. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, Item 2</a></p>
+      </article>
+
+      <article class="disc reveal" style="--d:.06s">
+        <span class="n">03</span>
+        <h3>A Nasdaq minimum bid price notice</h3>
+        <p>On Jul&nbsp;17, 2026 Nasdaq notified the company that it no longer meets the $1.00 minimum bid price in Listing Rule 5550(a)(2), based on the 30 consecutive business days from Jun&nbsp;3 to Jul&nbsp;16, 2026. The notice has no immediate effect on trading under the symbol NSPR. The company has 180 calendar days, until Jan 13, 2027, and must close at or above $1.00 for at least ten consecutive business days to regain compliance. The company says it will monitor the bid price and evaluate options to regain compliance, including, if necessary, effecting a reverse stock split. It may be eligible for a second 180-day period if it meets the continued-listing requirement for the market value of publicly held shares and all other initial-listing standards except the bid price, and gives Nasdaq written notice of its intention to cure. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226034430/form8-k.htm" target="_blank" rel="noopener">8-K, Jul&nbsp;23, 2026</a></p>
+        <p>The last sale price the 10-Q reports is $0.8401 on Aug&nbsp;13, 2026. The 10-K lists failure to keep the Nasdaq minimum listing requirements, and the delisting that would follow, among its risks. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, Liquidity</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 1A</a></p>
+      </article>
+
+      <article class="disc disc-wide reveal">
+        <span class="n">04</span>
+        <h3>Dilution: sales of stock and warrants</h3>
+        <div class="disc-cols">
+        <p><b>At-the-market sales.</b> On Apr&nbsp;3, 2026 the company replaced its 2024 agreement with Piper Sandler with one with BTIG for up to $75 million of common stock at a commission of up to 3.0%. The 10-Q says no shares had been sold under it. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226015127/form8-k.htm" target="_blank" rel="noopener">8-K, Apr&nbsp;3, 2026</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, Liquidity</a></p>
+        <p><b>Warrants.</b> The May 2023 Series J and Series K warrants have an exercise price of $1.3827. By the 10-Q date $33.8M of the $71.4M of gross proceeds possible from all four series had been received, and the company believes holders are unlikely to exercise while the share price is below $1.3827. The Series J warrants run to the earlier of May&nbsp;15, 2028 and 20 trading days after the company announces FDA approval of SwitchGuard and CGuard Prime 80 cm; the Series K warrants are scheduled to expire Oct&nbsp;28, 2026. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, Liquidity</a></p>
+        <p><b>Amendments on Sep&nbsp;21, 2026.</b> The amendments were made with certain holders of Series J warrants for up to 9,543,952 shares and Series K warrants for up to 9,543,947 shares. For those holders, who include directors, the exercise price became $0.7674 on 50% of their Series J shares and all of their Series K shares, with an end date of the earlier of May&nbsp;15, 2028 and 20 trading days after the company announces FDA approval of CGuard Prime 80 cm. The company&rsquo;s headline gave potential gross proceeds of up to $11 million. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226043488/form8-k.htm" target="_blank" rel="noopener">8-K, Sep&nbsp;21, 2026</a> <a class="src-l" href="https://investors.inspiremd.com/news-releases/news-release-details/inspiremd-announces-amendments-certain-series-j-and-series-k" target="_blank" rel="noopener">press release, investor site</a></p>
+        <p><b>Share counts and their bases.</b> 46,921,061 common shares at Jun&nbsp;30, 2026 and 46,489,118 at Aug&nbsp;14, 2026, both excluding pre-funded warrants. Authorized common shares are 250,000,000. At Jun&nbsp;30, 2026 there were also 43,092,107 pre-funded warrants and 25,828,164 Series J and Series K warrants outstanding, and the 46,921,061 shares include 6,734,737 unvested restricted shares. The company closed a private placement of about $40.1M gross in August 2025 and one of $42.2M gross in May 2023. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, balance sheet</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, cover</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, notes</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, Liquidity</a></p>
+        </div>
+      </article>
+
+      <article class="disc reveal" style="--d:.06s">
+        <span class="n">05</span>
+        <h3>Approvals the plan depends on</h3>
+        <p><b>CGuard EPS</b> has CE Mark approval; its PMA was submitted to the FDA in Q1 2026 and is not approved. <b>CGuard Prime</b> is FDA approved, but the company says it may be unable to resume U.S. commercialization until the recall issues are resolved. The 80 cm version for TCAR and SwitchGuard NPS are in pivotal trials and are not approved. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, Item 2</a> The company&rsquo;s Jun&nbsp;11, 2026 release, in its note on the 80 cm device, says it submitted a PMA supplement to the FDA that is currently under review; the release does not say which approval the supplement seeks. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226028221/form8-k.htm" target="_blank" rel="noopener">8-K, Jun&nbsp;11, 2026</a></p>
+        <p>Among the risks the 10-K lists are that the results of the company&rsquo;s trials &ldquo;may be insufficient to obtain regulatory approval,&rdquo; that the trials needed for a premarket approval &ldquo;will be lengthy and expensive,&rdquo; and that its products may be subject to recalls. It also lists that it will need to raise additional capital, and that such capital raising may dilute stockholders. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 1A</a></p>
+      </article>
+
+      <article class="disc reveal">
+        <span class="n">06</span>
+        <h3>One factory, in Israel</h3>
+        <p>The company makes CGuard EPS and CGuard Prime at one leased facility of 1,830 square meters in Tel Aviv, Israel, with capacity of about 5,500 products a quarter on a single shift; the lease runs through Dec&nbsp;31, 2028. The 10-K says that if the facility, its raw materials or its shipping were disrupted it &ldquo;would have no other means of manufacturing and distributing&rdquo; the two products until it restored capacity or developed alternatives. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 1A</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 2</a></p>
+        <p>The 10-K also lists conditions in Israel and its neighbors as a risk, and says a substantial part of revenue is expected in euros and U.S. dollars while a significant part of expenses is in new Israeli shekels. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 1A</a></p>
+      </article>
+
+      <article class="disc reveal" style="--d:.06s">
+        <span class="n">07</span>
+        <h3>Changes in leadership and on the board</h3>
+        <p>On Feb&nbsp;27, 2026 the company gave notice of dismissal to its Chief Operating Officer. On Jul&nbsp;23, 2026 it told its Chief Commercial Officer that the position had been eliminated, effective Jul&nbsp;31. On May&nbsp;20, 2026 the Chair of the Board gave notice of a decision not to seek reelection and to retire at the 2027 annual meeting. Directors resigned effective Dec&nbsp;31, 2025 and Jul&nbsp;1, 2026; neither resignation was due to a disagreement with the company. The 10-Q also refers to severance for the former chief financial officer&rsquo;s retirement, recognized in the quarter ended Jun&nbsp;30, 2025. After Jun&nbsp;30, 2026 the company began a workforce reduction expected to cut the number of positions by almost 20%, with annualized operating expense savings of about $9.0 million and aggregate restructuring charges of about $0.9 million to $1.2 million, mostly severance. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226008894/form8-k.htm" target="_blank" rel="noopener">8-K, Mar&nbsp;4, 2026</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226035220/form8-k.htm" target="_blank" rel="noopener">8-K, Jul&nbsp;29, 2026</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226025017/form8-k.htm" target="_blank" rel="noopener">8-K, May&nbsp;22, 2026</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315225028558/form8-k.htm" target="_blank" rel="noopener">8-K, Dec&nbsp;19, 2025</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226031945/form8-k.htm" target="_blank" rel="noopener">8-K, Jul&nbsp;2, 2026</a> <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, MD&amp;A</a></p>
+      </article>
+
+      <article class="disc reveal">
+        <span class="n">08</span>
+        <h3>Where the revenue comes from</h3>
+        <p>Two principal customers were 14% and 12% of revenue in 2025 (2024: 13%, 10% and 10%). By customer location the United States was $1.42M of the $8.98M, Germany $1.23M, Italy $1.23M, Poland $1.04M and other countries $4.06M. Russia was $0.71M in 2024 and is shown as a dash in 2025. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K, Item 8</a></p>
+        <p>In the six months ended Jun&nbsp;30, 2026 (unaudited) U.S. revenue was $0.83M, about 16% of revenue (derived), after the recall credits; international revenue was $4.34M. <a class="src-l" href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q, MD&amp;A</a></p>
+      </article>
+    </div>
+  </div>
+</section>
+<!-- ============ 07 THE RECORD: press/news + alerts. Left, the company's own investor-site news and events as listed on Oct 11, 2026 (headlines only, linked to the detail pages seen on that site); right, the filing behind each item on EDGAR. Where the two differ, the filing governs. ============ -->
+<section id="record" class="record sec-white" aria-labelledby="rec-h">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="ring" aria-hidden="true"><svg viewBox="0 0 34 34" focusable="false"><polygon class="rp" points="17.0,2.0 19.7,7.0 24.5,4.0 24.4,9.6 30.0,9.5 27.0,14.3 32.0,17.0 27.0,19.7 30.0,24.5 24.4,24.4 24.5,30.0 19.7,27.0 17.0,32.0 14.3,27.0 9.5,30.0 9.6,24.4 4.0,24.5 7.0,19.7 2.0,17.0 7.0,14.3 4.0,9.5 9.6,9.6 9.5,4.0 14.3,7.0"/><circle class="rc" cx="17" cy="17" r="2.3"/></svg></span>
+      <p class="eyebrow">The record</p>
+      <h2 id="rec-h">What the company announced, and what it filed</h2>
+      <p class="lead">The left column is the company&rsquo;s own news and events list as shown on its investor site. The right column lists its 10-K, 10-Q and 8-K filings and its definitive proxy statement from Mar&nbsp;4 to Sep&nbsp;21, 2026; EDGAR has every filing.</p>
+    </div>
+    <div class="rec-grid">
+      <div class="rec-col reveal">
+        <h3>From the company</h3>
+        <ul class="rec-list">
+          <li class="doc-row"><time datetime="2026-09-21">Sep&nbsp;21, 2026</time><a href="https://investors.inspiremd.com/news-releases/news-release-details/inspiremd-announces-amendments-certain-series-j-and-series-k" target="_blank" rel="noopener">InspireMD Announces Amendments to Certain Series J and Series K Warrants, Providing Potential Gross Proceeds of Up to $11 Million</a></li>
+          <li class="doc-row"><time datetime="2026-09-04">Sep&nbsp;4, 2026</time><a href="https://investors.inspiremd.com/news-releases/news-release-details/inspiremd-announces-inducement-grants-under-nasdaq-listing-9" target="_blank" rel="noopener">InspireMD Announces Inducement Grants Under Nasdaq Listing Rule 5635(c)(4)</a></li>
+          <li class="doc-row"><time datetime="2026-09-03">Sep&nbsp;3, 2026</time><a href="https://investors.inspiremd.com/news-releases/news-release-details/inspiremd-participate-upcoming-hc-wainwright-28th-annual-global" target="_blank" rel="noopener">InspireMD to Participate in Upcoming H.C. Wainwright 28th Annual Global Investment Conference</a></li>
+          <li class="doc-row"><time datetime="2026-08-17">Aug&nbsp;17, 2026</time><a href="https://investors.inspiremd.com/news-releases/news-release-details/inspiremd-reports-second-quarter-2026-financial-results" target="_blank" rel="noopener">InspireMD Reports Second Quarter 2026 Financial Results</a></li>
+          <li class="doc-row"><time datetime="2026-09-14">Sep&nbsp;14, 2026</time><span><em>Event:</em> <a href="https://investors.inspiremd.com/events/event-details/hc-wainwright-28th-annual-global-investment-conference" target="_blank" rel="noopener">H.C. Wainwright 28th Annual Global Investment Conference</a>, 2:30 PM EDT</span></li>
+          <li class="doc-row"><time datetime="2026-08-17">Aug&nbsp;17, 2026</time><span><em>Event:</em> <a href="https://investors.inspiremd.com/events/event-details/q2-2026-earnings-call" target="_blank" rel="noopener">Q2 2026 Earnings Call</a>, 8:30 AM EDT</span></li>
+        </ul>
+        <p class="note rec-more">Headlines only, as listed on the investor site on Oct&nbsp;11, 2026. This page does not summarize releases it has not read.</p>
+        <p class="rec-more"><a class="btn btn-ghost" href="https://investors.inspiremd.com/news-events/news-releases" target="_blank" rel="noopener">All company news <span class="arw" aria-hidden="true">-&gt;</span></a></p>
+      </div>
+      <div class="rec-col reveal" style="--d:.06s">
+        <h3>Filed with the SEC</h3>
+        <ul class="rec-list">
+          <li class="doc-row"><time datetime="2026-09-21">Sep 21, 2026</time><span><a href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226043488/form8-k.htm" target="_blank" rel="noopener">8-K</a> Amendments to Series J and Series K warrants.</span></li>
+          <li class="doc-row"><time datetime="2026-08-17">Aug 17, 2026</time><span><a href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038624/form8-k.htm" target="_blank" rel="noopener">8-K</a> Press release on second quarter 2026 results.</span></li>
+          <li class="doc-row"><time datetime="2026-08-14">Aug 14, 2026</time><span><a href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226038438/form10-q.htm" target="_blank" rel="noopener">10-Q</a> Quarterly report for the quarter ended Jun&nbsp;30, 2026, unaudited.</span></li>
+          <li class="doc-row"><time datetime="2026-07-29">Jul 29, 2026</time><span><a href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226035220/form8-k.htm" target="_blank" rel="noopener">8-K</a> Chief Commercial Officer position eliminated.</span></li>
+          <li class="doc-row"><time datetime="2026-07-23">Jul 23, 2026</time><span><a href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226034430/form8-k.htm" target="_blank" rel="noopener">8-K</a> Nasdaq minimum bid price notice.</span></li>
+          <li class="doc-row"><time datetime="2026-07-02">Jul 2, 2026</time><span><a href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226031945/form8-k.htm" target="_blank" rel="noopener">8-K</a> Director resignation.</span></li>
+          <li class="doc-row"><time datetime="2026-06-11">Jun 11, 2026</time><span><a href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226028221/form8-k.htm" target="_blank" rel="noopener">8-K</a> Press release on 30-day results from CGUARDIANS II.</span></li>
+          <li class="doc-row"><time datetime="2026-06-03">Jun 3, 2026</time><span><a href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226027045/form8-k.htm" target="_blank" rel="noopener">8-K</a> Annual meeting; increase in authorized common shares.</span></li>
+          <li class="doc-row"><time datetime="2026-05-22">May 22, 2026</time><span><a href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226025017/form8-k.htm" target="_blank" rel="noopener">8-K</a> Chair of the Board will not seek reelection.</span></li>
+          <li class="doc-row"><time datetime="2026-05-07">May 7, 2026</time><span><a href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226021636/form10-q.htm" target="_blank" rel="noopener">10-Q</a> Quarterly report for the quarter ended Mar&nbsp;31, 2026, unaudited.</span></li>
+          <li class="doc-row"><time datetime="2026-05-04">May 4, 2026</time><span><a href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226021105/form8-k.htm" target="_blank" rel="noopener">8-K</a> Press release on first quarter 2026 results.</span></li>
+          <li class="doc-row"><time datetime="2026-05-01">May 1, 2026</time><span><a href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226020891/form8-k.htm" target="_blank" rel="noopener">8-K</a> Voluntary recall of the CGuard Prime 135 cm delivery system; CGUARDIANS III IDE approved.</span></li>
+          <li class="doc-row"><time datetime="2026-04-20">Apr 20, 2026</time><span><a href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226018103/formdef14a.htm" target="_blank" rel="noopener">DEF 14A</a> Proxy statement.</span></li>
+          <li class="doc-row"><time datetime="2026-04-03">Apr 3, 2026</time><span><a href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226015127/form8-k.htm" target="_blank" rel="noopener">8-K</a> Equity distribution agreement with BTIG.</span></li>
+          <li class="doc-row"><time datetime="2026-03-18">Mar 18, 2026</time><span><a href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010886/form10-k.htm" target="_blank" rel="noopener">10-K</a> Annual report for the year ended Dec&nbsp;31, 2025.</span></li>
+          <li class="doc-row"><time datetime="2026-03-18">Mar 18, 2026</time><span><a href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226010791/form8-k.htm" target="_blank" rel="noopener">8-K</a> Press release on fourth quarter and full-year 2025 results.</span></li>
+          <li class="doc-row"><time datetime="2026-03-04">Mar 4, 2026</time><span><a href="https://www.sec.gov/Archives/edgar/data/1433607/000149315226008894/form8-k.htm" target="_blank" rel="noopener">8-K</a> Chief Operating Officer notice of dismissal.</span></li>
+        </ul>
+        <p class="rec-more"><a class="btn btn-ghost" href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001433607&amp;type=&amp;dateb=&amp;owner=include&amp;count=40" target="_blank" rel="noopener">All filings on EDGAR <span class="arw" aria-hidden="true">-&gt;</span></a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 08 CONTACT IR + investor alerts. Only what the investor site or the 10-K cover shows; no invented address, extension or agent. ============ -->
+<section id="contact" class="contact sec-tint" aria-labelledby="ct-h">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="ring" aria-hidden="true"><svg viewBox="0 0 34 34" focusable="false"><polygon class="rp" points="17.0,2.0 19.7,7.0 24.5,4.0 24.4,9.6 30.0,9.5 27.0,14.3 32.0,17.0 27.0,19.7 30.0,24.5 24.4,24.4 24.5,30.0 19.7,27.0 17.0,32.0 14.3,27.0 9.5,30.0 9.6,24.4 4.0,24.5 7.0,19.7 2.0,17.0 7.0,14.3 4.0,9.5 9.6,9.6 9.5,4.0 14.3,7.0"/><circle class="rc" cx="17" cy="17" r="2.3"/></svg></span>
+      <p class="eyebrow">Contact IR</p>
+      <h2 id="ct-h">Go to the company&rsquo;s own investor site</h2>
+      <p class="lead">This concept page is not InspireMD&rsquo;s. For the company&rsquo;s official news, presentations, stock information, email alerts and FAQs, use its investor site.</p>
+    </div>
+    <div class="contact-card reveal">
+      <div>
+        <dl>
+          <div><dt>Investor contact</dt><dd>Michael Lawless, CFO, as listed on the investor site</dd></div>
+          <div><dt>Email</dt><dd><a href="mailto:investor-relations@inspiremd.com">investor-relations@inspiremd.com</a>, as shown on the investor site</dd></div>
+          <div><dt>Telephone</dt><dd>(888) 776-6804, as given on the 10-K cover</dd></div>
+          <div><dt>Principal office</dt><dd>6303 Waterford District Drive, Suite 215, Miami, Florida 33126, per the 10-K cover</dd></div>
+          <div><dt>Website</dt><dd>inspiremd.com</dd></div>
+        </dl>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://investors.inspiremd.com/" target="_blank" rel="noopener">Open the investor site <span class="arw" aria-hidden="true">-&gt;</span></a>
+          <a class="btn btn-ink" href="https://investors.inspiremd.com/ir-resources/email-alerts" target="_blank" rel="noopener">Email alerts</a>
+          <a class="btn btn-ink" href="https://investors.inspiremd.com/static-files/44d7e911-55ae-4fcd-9d8d-71fbe9ca2e8f" target="_blank" rel="noopener">October 2026 investor deck (PDF)</a>
+        </div>
+      </div>
+      <figure class="mark-fig">
+        <img src="img/favicon.png" width="132" height="132" loading="lazy" alt="The company's favicon: green wire loops forming a mesh on a cobalt blue ground.">
+        <figcaption>The mark. The company&rsquo;s own mesh favicon.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <a class="footer-logo" href="#hero" aria-label="InspireMD, back to the top"><img src="img/logo.svg" alt="InspireMD" width="600" height="82"></a>
+      <ul class="footer-links">
+        <li><a href="https://investors.inspiremd.com/" target="_blank" rel="noopener">Official investor relations site</a></li>
+        <li><a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001433607&amp;type=&amp;dateb=&amp;owner=include&amp;count=40" target="_blank" rel="noopener">SEC filings (EDGAR)</a></li>
+        <li><a href="https://www.inspiremd.com/" target="_blank" rel="noopener">inspiremd.com</a></li>
+        <li><a href="#disclosures">Disclosures</a></li>
+        <li><a href="#record">The record</a></li>
+      </ul>
+    </div>
+    <p class="fls"><b>Sources and method:</b> Figures come from the company&rsquo;s annual report on Form 10-K for the year ended December 31, 2025 (filed March 18, 2026), its quarterly report on Form 10-Q for the quarter ended June 30, 2026 (filed August 14, 2026) and its Forms 8-K through September 21, 2026, each linked beside the item. The 2021 to 2023 bars in Plate A come from the SEC&rsquo;s XBRL data for the company&rsquo;s earlier annual reports, and the former company name comes from EDGAR&rsquo;s company record; neither is among the filings linked here. Financial tables are in US dollars as reported, and the filings state thousands. The six-month statements and the June 30, 2026 balance sheet are unaudited, and periods are labeled by their end date. The company&rsquo;s own statements about itself, in its news list, its home page and its investor-site metrics, are marked as such and are not verified here; several of those metrics, such as units sold and countries with double-digit market share, do not appear in its filings in that form and are not used. The market estimates are the company&rsquo;s, with the source it cites. Derived or rounded figures are labeled where they appear: growth rates, gross margin, shares of revenue and the drawing scale of the mesh pore. Share counts name their base because the balance sheet, the 10-Q cover and the weighted average used for loss per share differ. The product image, the logo and the favicon are the company&rsquo;s own; the hero schematic and the pore drawing are this concept page&rsquo;s and are not clinical data. No live or delayed share quote is shown, and the only share prices cited are those stated in the filings, with their dates. No person is named from a photograph.</p>
+    <p class="fls"><b>About this page:</b> This is an independent design concept and is not the official InspireMD investor relations website. It is not affiliated with, endorsed by, or maintained by InspireMD, Inc. Figures were assembled from public materials at a point in time and may be outdated; verify every figure against the company's official SEC filings. For official information, visit <a href="https://investors.inspiremd.com/">investors.inspiremd.com</a>.</p>
+    <p class="fls"><b>Forward-Looking Statements:</b> This website contains forward-looking statements within the meaning of the Private Securities Litigation Reform Act of 1995, including statements regarding the company's ability to continue as a going concern and to raise additional capital, dilution from sales of equity and the exercise of warrants, the U.S. recall of the CGuard Prime delivery system and its remediation, regulatory approval of CGuard EPS and of other products and indications, the results of clinical trials, the continued listing of its common stock on Nasdaq, market acceptance and reimbursement of its products, its reliance on a single manufacturing facility in Israel and conditions in Israel, changes in its leadership, competition, and the protection of its intellectual property. These statements involve known and unknown risks, uncertainties, and other factors that may cause actual results to differ materially from those expressed or implied. We undertake no obligation to update any forward-looking statements except as required by law. See the company's SEC filings, including its most recent 10-K and 10-Q, for a full discussion of risk factors.</p>
+    <p class="market-note">Market data, where shown, is delayed at least 15 minutes and provided for this concept only. Real-time quotes and official figures are available through the company's investor relations site and SEC filings. This concept page shows no live or delayed share quote; the only share prices it cites are those stated in the filings, with their dates.</p>
+  </div>
+</footer>
+
+<script>
+/* mediaconsole motion: inlined by scaffold.mjs at the end of body, identical on every page; never edit it.
+   Sets html.js, runs the ONE reveal observer (fires the mc:reveal hook), scroll-spy, hamburger aria, and the
+   #hero-motif .paused toggle (off-screen, hidden tab, [data-motif-toggle]). Null-guarded: a failure reveals everything. */
+(function(){
+  var d=document,root=d.documentElement;
+  root.classList.add('js');
+  var reduce=!!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var hasIO='IntersectionObserver' in window;
+  function fire(el,name,detail){
+    var ev;
+    try{ev=new CustomEvent(name,{bubbles:true,detail:detail})}
+    catch(x){ev=d.createEvent('CustomEvent');ev.initCustomEvent(name,true,false,detail)}
+    el.dispatchEvent(ev);
+  }
+  /* mc:reveal fires ONCE per .reveal element, bubbling, as .in lands; detail.reduced is true under reduced motion.
+     Components hook here (counters.js) instead of adding a second observer. */
+  function show(el){
+    if(el.classList.contains('in'))return;
+    el.classList.add('in');
+    fire(el,'mc:reveal',{reduced:reduce});
+  }
+  try{
+    var els=[].slice.call(d.querySelectorAll('.reveal'));
+    if(reduce||!hasIO){els.forEach(show)}
+    else{
+      var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){io.unobserve(e.target);show(e.target)}})},{threshold:.12});
+      els.forEach(function(el){io.observe(el)});
+    }
+  }catch(err){root.classList.remove('js');[].forEach.call(d.querySelectorAll('.reveal'),function(el){el.classList.add('in')})}
+  try{
+    var burger=d.querySelector('.nav-burger'),links=d.getElementById('nav-links'),nav=d.querySelector('.site-nav');
+    if(burger&&links){
+      var setOpen=function(o){links.classList.toggle('open',o);burger.setAttribute('aria-expanded',o?'true':'false')};
+      burger.addEventListener('click',function(){setOpen(!links.classList.contains('open'))});
+      links.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a'))setOpen(false)});
+      d.addEventListener('keydown',function(e){if((e.key==='Escape'||e.key==='Esc')&&links.classList.contains('open')){setOpen(false);burger.focus()}});
+    }
+    if(nav){var onScroll=function(){nav.classList.toggle('scrolled',window.scrollY>8)};window.addEventListener('scroll',onScroll,{passive:true});onScroll()}
+  }catch(err){}
+  try{
+    var na=[].slice.call(d.querySelectorAll('.nav-links a[href^="#"]:not(.btn)'));
+    if(na.length&&hasIO){
+      var so=new IntersectionObserver(function(en){en.forEach(function(e){
+        if(!e.isIntersecting)return;var id='#'+e.target.id;
+        na.forEach(function(a){var on=a.getAttribute('href')===id;a.classList.toggle('active',on);if(on)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current')});
+      })},{rootMargin:'-40% 0px -55% 0px'});
+      na.forEach(function(a){var t=d.getElementById(a.getAttribute('href').slice(1));if(t)so.observe(t)});
+    }
+  }catch(err){}
+  /* hero motif pause: toggles .paused on #hero-motif (off-screen, hidden tab, or the user's [data-motif-toggle]).
+     The class is the whole contract: substrate CSS pauses every CSS animation inside it; JS motifs watch it (wave.js). */
+  try{
+    var motif=d.getElementById('hero-motif');
+    if(motif&&!reduce){
+      var hero=d.getElementById('hero')||motif,hv=true,user=false,tg=[].slice.call(d.querySelectorAll('[data-motif-toggle]'));
+      var sm=function(){var p=user||!hv||d.hidden;motif.classList.toggle('paused',p)};
+      if(hasIO)new IntersectionObserver(function(en){en.forEach(function(e){hv=e.isIntersecting});sm()},{threshold:0}).observe(hero);
+      d.addEventListener('visibilitychange',sm);
+      tg.forEach(function(b){
+        b.setAttribute('aria-pressed','false');
+        b.addEventListener('click',function(){user=!user;tg.forEach(function(t){t.setAttribute('aria-pressed',user?'true':'false')});sm()});
+      });
+    }
+  }catch(err){}
+})();
+</script>
+</body>
+</html>
